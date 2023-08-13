@@ -7,27 +7,17 @@ import Profile from './src/screens/employees/profile/Profile';
 import React from 'react';
 import AllTimeSheets from './src/screens/employees/allTimeSheets/AllTimeSheets';
 const Stack = createNativeStackNavigator();
-<<<<<<< HEAD
 import Cadastro from './src/screens/employees/cadastro/Cadastro';
-=======
->>>>>>> dcb7f413b1d861c1655b960c98e3e4ed2a45b972
 
 export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-<<<<<<< HEAD
         <Stack.Navigator initialRouteName="Cadastro">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
           <Stack.Screen name="Cadastro" component={Cadastro} />
-=======
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
->>>>>>> dcb7f413b1d861c1655b960c98e3e4ed2a45b972
 
         </Stack.Navigator>
         <StatusBar style="auto" />
