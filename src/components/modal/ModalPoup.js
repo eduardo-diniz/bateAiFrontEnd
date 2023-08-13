@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Modal, Animated, Image, Text } from 'react-native';
 
-const ModalPopup = ({ visible, children }) => {
+const ModalPopup = ({ visible, children, text, status }) => {
   const [showModal, setShowModal] = useState(visible);
   const scaleValue = useRef(new Animated.Value(0)).current;
 
@@ -32,6 +32,20 @@ const ModalPopup = ({ visible, children }) => {
       <View style={styles.modalBackGround}>
         <Animated.View
           style={[styles.modalContainer, { transform: [{ scale: scaleValue }] }]}>
+           { status ? 
+
+             <Image style={styles.image}
+             
+             source={require('../../../assets/success.png' )}
+             />
+             :
+           <Image style={styles.image2}
+           
+           source={require('../../../assets/unsuccess.png' )}
+           />
+          }
+               <Text style={{ marginVertical: 30, fontSize: 20, textAlign: 'center' }}>{text}
+                </Text>
           {children}
         </Animated.View>
       </View>
@@ -53,6 +67,25 @@ const styles = {
     paddingVertical: 30,
     borderRadius: 20,
     elevation: 20,
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  image: {
+    height: 50,
+    width: 50,
+    alignSelf: 'center' 
+  },
+  image2: {
+    height: 70,
+    width: 70,
+    alignSelf: 'center' 
+  },
+  text: {
+    marginVertical: 30,
+    fontSize: 20,
+    textAlign: 'center',
   },
 };
 
