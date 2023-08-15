@@ -12,7 +12,7 @@ const Cadastro = () => {
   const navigation = useNavigation();
 
   const handleSubmit = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('Home');
 
   
   };
