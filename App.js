@@ -8,16 +8,25 @@ import React from 'react';
 import AllTimeSheets from './src/screens/employees/allTimeSheets/AllTimeSheets';
 const Stack = createNativeStackNavigator();
 import Cadastro from './src/screens/employees/cadastro/Cadastro';
+import CadastroCompany from './src/screens/employers/cadastroEmpresa/CadastroCompany';
+import ConfirmacaoCompany from './src/screens/employers/confirmacaoEmpresa/ConfirmacaoCompany';
+import AddArea from './src/screens/employers/addArea/AddArea';
+import ConfirmacaoSetor from './src/screens/employers/confirmaçãoSetor/ConfirmacaoSetor'
+
 
 export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <Stack.Navigator initialRouteName="Cadastro">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
           <Stack.Screen name="Cadastro" component={Cadastro} />
+          <Stack.Screen name="CadastroCompany" component={CadastroCompany} />
+          <Stack.Screen name="ConfirmacaoCompany" component={ConfirmacaoCompany} />
+          <Stack.Screen name="AddArea" component={AddArea} />
+          <Stack.Screen name="ConfirmacaoSetor" component={ConfirmacaoSetor} />
 
         </Stack.Navigator>
         <StatusBar style="auto" />
