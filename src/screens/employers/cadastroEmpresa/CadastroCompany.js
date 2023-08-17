@@ -11,7 +11,7 @@ const CadastroCompany = () => {
   const navigation = useNavigation();
 
   const handleSubmit = () => {
-    navigation.navigate('Home');
+    navigation.navigate('ConfirmacaoCompany');
 
   
   };

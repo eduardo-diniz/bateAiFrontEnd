@@ -12,13 +12,14 @@ import CadastroCompany from './src/screens/employers/cadastroEmpresa/CadastroCom
 import ConfirmacaoCompany from './src/screens/employers/confirmacaoEmpresa/ConfirmacaoCompany';
 import AddArea from './src/screens/employers/addArea/AddArea';
 import ConfirmacaoSetor from './src/screens/employers/confirmaçãoSetor/ConfirmacaoSetor'
+import CoicheScreen from './src/screens/Login/initial/choice';
 
 
 export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="CoicheScreen">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
@@ -27,6 +28,7 @@ export default function App() {
           <Stack.Screen name="ConfirmacaoCompany" component={ConfirmacaoCompany} />
           <Stack.Screen name="AddArea" component={AddArea} />
           <Stack.Screen name="ConfirmacaoSetor" component={ConfirmacaoSetor} />
+          <Stack.Screen name="CoicheScreen" component={CoicheScreen} />
 
         </Stack.Navigator>
         <StatusBar style="auto" />

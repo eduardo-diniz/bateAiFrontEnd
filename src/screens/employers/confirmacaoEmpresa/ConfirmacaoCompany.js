@@ -5,7 +5,7 @@ import ButtonC from '../../../components/button/ButtonC';
 const ConfirmacaoCompany = ({ navigation }) => {
 
     const handleverRegistros = () => {
-        navigation.navigate('AllTimeSheets');
+        navigation.navigate('AddArea');
     };
 
     return (
