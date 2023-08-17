@@ -7,13 +7,16 @@ import Profile from './src/screens/employees/profile/Profile';
 import React from 'react';
 import AllTimeSheets from './src/screens/employees/allTimeSheets/AllTimeSheets';
 const Stack = createNativeStackNavigator();
-import Cadastro from './src/screens/employees/cadastro/Cadastro';
-import CadastroCompany from './src/screens/employers/cadastroEmpresa/CadastroCompany';
-import ConfirmacaoCompany from './src/screens/employers/confirmacaoEmpresa/ConfirmacaoCompany';
-import AddArea from './src/screens/employers/addArea/AddArea';
-import ConfirmacaoSetor from './src/screens/employers/confirmaçãoSetor/ConfirmacaoSetor'
+import SignUp from './src/screens/employees/signUp/SignUp';
+import AddCompany from './src/screens/company/addCompany/AddCompany';
+import CompanyConfirmation from './src/screens/company/companyConfirmation/CompanyConfirmation';
+import AddDepartament from './src/screens/company/addArea/AddDepartment';
+import DepartamentConfirmation from './src/screens/company/departamentConfirmation/DepartamentConfirmation.js'
 import CoicheScreen from './src/screens/Login/initial/choice';
-
+import AllDepartments from './src/screens/company/allDepartaments/AllDepartaments';
+import ShareDep from './src/screens/company/shareDep/ShareDep'
+import ConfirmationSector from './src/screens/company/confirmaçãoSetor/ConfirmationSector'
+import LoginScreen from './src/screens/Login/Login/login'
 
 export default function App() {
   return (
@@ -23,13 +26,16 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
-          <Stack.Screen name="Cadastro" component={Cadastro} />
-          <Stack.Screen name="CadastroCompany" component={CadastroCompany} />
-          <Stack.Screen name="ConfirmacaoCompany" component={ConfirmacaoCompany} />
-          <Stack.Screen name="AddArea" component={AddArea} />
-          <Stack.Screen name="ConfirmacaoSetor" component={ConfirmacaoSetor} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="AddCompany" component={AddCompany} />
+          <Stack.Screen name="CompanyConfirmation" component={CompanyConfirmation} />
+          <Stack.Screen name="AddDepartament" component={AddDepartament} />
+          <Stack.Screen name="DepartamentConfirmation" component={DepartamentConfirmation} />
           <Stack.Screen name="CoicheScreen" component={CoicheScreen} />
-
+          <Stack.Screen name="AllDepartments" component={AllDepartments} />
+          <Stack.Screen name="ShareDep" component={ShareDep} />
+          <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </View>

@@ -5,7 +5,7 @@ import ButtonC from '../../../components/button/ButtonC';
 const ConfirmacaoCompany = ({ navigation }) => {
 
     const handleverRegistros = () => {
-        navigation.navigate('AddArea');
+        navigation.navigate('AddDepartament');
     };
 
     return (
@@ -16,9 +16,9 @@ const ConfirmacaoCompany = ({ navigation }) => {
                     <Image source={require('../../../../assets/success.png')} style={styles.image} />
 
                     <Text style={styles.message}>
-                        Empresa criada com sucesso! {'\n'} Para começar a convidar funcionários, crie um Setor.
+                        Empresa criada com sucesso! {'\n'} Para começar a convidar funcionários, crie um departamento.
                     </Text>
-                    <ButtonC name={'Criar Setor'} onPress={handleverRegistros} />
+                    <ButtonC name={'criar departamento'} onPress={handleverRegistros} />
                 </View>
 
             </View>

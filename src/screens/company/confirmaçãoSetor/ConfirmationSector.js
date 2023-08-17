@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 
-const ConfirmacaoSetor = ({ navigation }) => {
+const DepartamentConfirmation = ({ navigation }) => {
 
     const handleverRegistros = () => {
-        navigation.navigate('Setores');
+        navigation.navigate('AllDepartments');
     };
 
     const handleverRegistros2 = () => {
-        navigation.navigate('AddArea');
+        navigation.navigate('AddCompany');
     };
 
     return (
@@ -23,7 +23,7 @@ const ConfirmacaoSetor = ({ navigation }) => {
                     Setor criado com sucesso! {'\n'} Já pode convidar seus funcionarios. {'\n'} Ou se preferir pode criar outros setores!
                     </Text>
                     <ButtonC name={'convidar funcionários'} onPress={handleverRegistros} />
-                    <ButtonC name={'Criar Setor'} onPress={handleverRegistros2} />
+                    <ButtonC name={'criar setor'} onPress={handleverRegistros2} />
                 </View>
 
             </View>
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ConfirmacaoSetor;
+export default DepartamentConfirmation;

@@ -8,10 +8,10 @@ const CoicheScreen = () => {
   const navigation = useNavigation();
 
   const handleVerPerfilCompany = () => {
-    navigation.navigate('CadastroCompany');
+    navigation.navigate('AddCompany');
   };
   const handleVerPerfilUser = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('SignUp');
   };
 
   const [highlightCompany, setHighlightCompany] = useState(false);
@@ -36,7 +36,7 @@ const CoicheScreen = () => {
           >
             <Image
               style={[styles.image, highlightCompany && styles.highlightedImage]}
-              source={require('../../../../assets/imagem_company.png')}
+              source={require('../../../../assets/image_company.png')}
             />
             <Text style={styles.imageText}>Empresa</Text>
           </TouchableOpacity>
@@ -54,7 +54,7 @@ const CoicheScreen = () => {
           >
             <Image
               style={[styles.image, highlightUser && styles.highlightedImage]}
-              source={require('../../../../assets/imagem_user.png')}
+              source={require('../../../../assets/image_user.png')}
             />
             <Text style={styles.imageText}>Funcionário</Text>
           </TouchableOpacity>
@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: windowWidth * 0.4,
-    height: windowWidth * 0.4,
+    width: windowWidth * 0.3,
+    height: windowWidth * 0.3,
     borderRadius: 10,
   },
   highlightedImage: {
-    borderColor: '#002E41', // Cor da borda azul quando selecionado
+    borderColor: '#002E41',
     borderWidth: 2,
   },
   imageText: {

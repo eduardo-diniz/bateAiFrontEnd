@@ -3,37 +3,54 @@ import { View, Text, TextInput, StyleSheet, SafeAreaView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
+import { createCompany } from '../../../services/services';
 
-const CadastroCompany = () => {
-  const [nome, setNome] = useState('');
-  const [nomeFic, setNomeFic] = useState('');
+const AddCompany = () => {
+  const [name, setName] = useState('');
+  const [fictionalName, setFictionalName] = useState('');
   const [CNPJ, setCNPJ] = useState('');
+  const [senha, setSenha] = useState('');
+
   const navigation = useNavigation();
 
-  const handleSubmit = () => {
-    navigation.navigate('ConfirmacaoCompany');
+  const handleCreateCompany = async () => {
+    const companyData = {
+      Name: name,
+      NomeFantasia: fictionalName,
+      CNPJ: CNPJ,
+      senha: senha
+    };
 
-  
+    try {
+      const response = await createCompany(companyData);
+      console.log('Resposta da criação da empresa:', response.data);
+      
+      navigation.navigate('CompanyConfirmation');
+
+    } catch (error) {
+      console.error('Erro ao criar empresa:', error);
+      setMessage('Erro ao criar empresa');
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.title}>Criar Empresa</Text>
+        <Text style={styles.title}>Create Company</Text>
         <View style={styles.form}>
-          <Text style={styles.label}>nome empresa:</Text>
+          <Text style={styles.label}>Company Name:</Text>
           <TextInput
             style={styles.input}
-            value={nome}
-            onChangeText={setNome}
+            value={name}
+            onChangeText={setName}
           />
 
-          <Text style={styles.label}>nome ficticio:</Text>
+          <Text style={styles.label}>Fictional Name:</Text>
           <TextInput
             style={styles.input}
-            value={nomeFic}
-            onChangeText={setNomeFic}
-            keyboardType="nomeFic-address"
+            value={fictionalName}
+            onChangeText={setFictionalName}
+            keyboardType="default"
           />
 
           <Text style={styles.label}>CNPJ:</Text>
@@ -43,8 +60,16 @@ const CadastroCompany = () => {
             onChangeText={setCNPJ}
             keyboardType="numeric"
           />
+
+          <Text style={styles.label}>Password:</Text>
+          <TextInput
+            style={styles.input}
+            value={senha}
+            onChangeText={setSenha}
+            keyboardType="default"
+          />
         </View>
-        <ButtonC style={styles.button} name="Enviar" onPress={handleSubmit} />
+        <ButtonC style={styles.button} name="Submit" onPress={handleCreateCompany} />
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
@@ -91,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CadastroCompany;
+export default AddCompany;

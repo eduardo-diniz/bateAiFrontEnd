@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         alignItems: 'center',
-        marginTop: 20, // Espaçamento superior para o título
+        marginTop: 20, 
         marginBottom: 5,
     },
     titleText: {
