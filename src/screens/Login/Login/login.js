@@ -22,11 +22,10 @@ const LoginScreen = ({ navigation }) => {
       await AsyncStorage.setItem('token', token);
       console.log('Login bem-sucedido. Token:', token);
 
-      // Verificar se é CPF ou CNPJ e redirecionar com base nessa informação
       if (cpfOuCnpj.length === 11) {
-        navigation.navigate('Home'); // Usuário com CPF
-      } else if (cpfOuCnpj.length === 14) {
-        navigation.navigate('CompanyConfirmation'); // Empresa com CNPJ
+        navigation.navigate('Home', { userIdentifier: cpfOuCnpj })
+          } else if (cpfOuCnpj.length === 14) {
+        navigation.navigate('CompanyConfirmation', { userIdentifier: cpfOuCnpj })
       }
 
     } catch (error) {

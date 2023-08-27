@@ -6,13 +6,15 @@ const ListViewC = ({ name, list }) => {
     <View>
 
       <Text style={styles.title}>{name}</Text>
-    <View style={styles.view}>
-      {list.map((item, index) => (
-          <Text key={index} style={styles.text}>
-          {item}
-        </Text>
-      ))}
-    </View>
+      <View style={styles.view}>
+  {list.map((item, index) => {
+    return (
+      <Text key={index} style={styles.text}>
+        {item?.Time}
+      </Text>
+    );
+  })}
+</View>
       </View>
   );
 }

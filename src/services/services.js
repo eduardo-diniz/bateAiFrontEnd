@@ -9,18 +9,26 @@ const endpoints = {
   departments: '/departments',
   departmentId: '/departments',
   login: '/auth/login',
-  user: '/users'
+  user: '/users',
+  userByCpf: '/users/bycpf',
+  timeSheets: 'timeSheets',
+  logout: '/auth/logout',
+
 };
 
 export const getCompanies = () => api.get(endpoints.companies);
 export const createCompany = (companyData) => api.post(endpoints.companies, companyData);
 export const getDepartment = () => api.get(endpoints.departments);
 export const getDepartmentByID = (id) => api.get(`${endpoints.departmentId}/${id}`);
+export const getUser = (cpf) => api.get(`${endpoints.userByCpf}/${cpf}`);
+export const getTimesheets = (cpf) => api.get(`${endpoints.timeSheets}/${cpf}`);
 
+export const createTimesheet = (cpf, time) => api.post(endpoints.timeSheets, {CPF: cpf, Time: time});
 export const createDepartment = (departmentData) => api.post(endpoints.departments, departmentData);
 export const createUser = (userData) => api.post(endpoints.user, userData);
 
 // Função para realizar o login
 export const login = (cpfOuCnpj, senha) => api.post(endpoints.login, { cpfOuCnpj, senha });
+export const logout = () => api.post(endpoints.logout);
 
 export default endpoints;

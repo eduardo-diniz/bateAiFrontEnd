@@ -17,12 +17,14 @@ import AllDepartments from './src/screens/company/allDepartaments/AllDepartament
 import ShareDep from './src/screens/company/shareDep/ShareDep'
 import ConfirmationSector from './src/screens/company/confirmaçãoSetor/ConfirmationSector'
 import LoginScreen from './src/screens/Login/Login/login'
+import { AuthProvider } from './src/AuthContext';
 
 export default function App() {
   return (
+    <AuthProvider>
     <NavigationContainer>
       <View style={styles.container}>
-        <Stack.Navigator initialRouteName="CoicheScreen">
+        <Stack.Navigator initialRouteName="LoginScreen">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
@@ -40,6 +42,7 @@ export default function App() {
         <StatusBar style="auto" />
       </View>
     </NavigationContainer>
+    </AuthProvider>
   );
 }
 
