@@ -29,7 +29,7 @@ O **Bate A.I** é um aplicativo mobile desenvolvido com Expo, React Native e Nod
 
 ## Como Usar
 
-1. Inicie o servidor de desenvolvimento: `expo start`
+1. Inicie o servidor de desenvolvimento: `npx expo start`
 2. Use o aplicativo Expo Go em um dispositivo físico ou emulador para testar o aplicativo.
 3. Siga as instruções na interface para registrar seu ponto diário.
 
