@@ -9,6 +9,7 @@ import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
 import { getUser, getTimesheets, createTimesheet, logout } from '../../../services/services';
 import { format } from 'date-fns';
+import  HomeStyle from './HomeStyle'
 
 const Home = () => {
   const { token, logout: authLogout } = useAuth();
@@ -86,7 +87,7 @@ const Home = () => {
 
       <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
 
-      <View style={styles.viewButtons}>
+      <View style={HomeStyle.viewButtons}>
         <ButtonC name={'Ver Perfil'} onPress={handleverPerfil} />
         <ButtonC name={'Ver Registros'} onPress={handleverRegistros} />
       </View>
@@ -106,12 +107,5 @@ const Home = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  viewButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 20,
-  },
-});
 
 export default Home;

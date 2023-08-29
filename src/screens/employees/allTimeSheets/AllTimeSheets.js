@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
 import { getUser, getTimesheets, createTimesheet, logout } from '../../../services/services';
+import { SheetStyle } from './AllTimeSheetsStyle'
 
 const AllTimeSheets = () => {
 
@@ -39,12 +40,12 @@ const AllTimeSheets = () => {
         fetchUserData();
       }, [userIdentifier, token]);
     return (
-        <View style={styles.container}>
+        <View style={SheetStyle.container}>
             <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
-            <View style={styles.titleContainer}>
-                <Text style={styles.titleText}>Todos Registros</Text>
+            <View style={SheetStyle.titleContainer}>
+                <Text style={SheetStyle.titleText}>Todos Registros</Text>
             </View>
-            <ScrollView style={styles.listViewContainer}>
+            <ScrollView style={SheetStyle.listViewContainer}>
                 {!timeSheets? <Text>Loading...</Text> : (
                     <ListViewC name={''} list={timeSheets} />
 
@@ -54,23 +55,6 @@ const AllTimeSheets = () => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-    },
-    listViewContainer: {
-        flex: 1,
-    },
-    titleContainer: {
-        alignItems: 'center',
-        marginTop: 20, 
-        marginBottom: 5,
-    },
-    titleText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-});
+
 
 export default AllTimeSheets;

@@ -17,6 +17,7 @@ import AllDepartments from './src/screens/company/allDepartaments/AllDepartament
 import ShareDep from './src/screens/company/shareDep/ShareDep'
 import ConfirmationSector from './src/screens/company/confirmaçãoSetor/ConfirmationSector'
 import LoginScreen from './src/screens/Login/Login/login'
+import TechnologyScreen from './src/screens/company/departamentConfirmation/DepartamentConfirmation'
 import { AuthProvider } from './src/AuthContext';
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           <Stack.Screen name="ShareDep" component={ShareDep} />
           <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="TechnologyScreen" component={TechnologyScreen} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </View>

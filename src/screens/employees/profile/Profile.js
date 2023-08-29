@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
+import { View, ProfileStylesheet, Image, Text, ScrollView } from 'react-native';
 import ListViewC from "../../../components/listView/ListViewC"
 import ProfileInfoC from "../../../components/profileInfo/ProfileInfoC";
 import ModalPopup from "../../../components/modal/ModalPoup";
@@ -8,7 +8,7 @@ import { getUser, getTimesheets, createTimesheet, logout } from '../../../servic
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
-
+import ProfileStyles from './ProfileStyle'; // Importando os estilos
 
 const Profile = () => {
 
@@ -34,12 +34,12 @@ const Profile = () => {
 
 
   return (
-    <View style={styles.container}>
-      <View style={styles.profileInfo}>
+    <View style={ProfileStyles.container}>
+      <View style={ProfileStyles.profileInfo}>
         <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
       </View>
 
-      <ScrollView style={styles.labelsContainer}>
+      <ScrollView style={ProfileStyles.labelsContainer}>
      
 
         <Label
@@ -77,18 +77,5 @@ const Profile = () => {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  profileInfo: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  labelsContainer: {
-    flex: 1,
-  },
-});
 
 export default Profile;

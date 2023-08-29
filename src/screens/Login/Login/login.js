@@ -1,7 +1,9 @@
+// LoginScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../../../services/services'; // Importando a função de login
+import LoginScreenStyles from './LoginScreenStyles'; // Importando os estilos
 
 const LoginScreen = ({ navigation }) => {
   const [cpfOuCnpj, setCPFouCNPJ] = useState('');
@@ -24,7 +26,7 @@ const LoginScreen = ({ navigation }) => {
 
       if (cpfOuCnpj.length === 11) {
         navigation.navigate('Home', { userIdentifier: cpfOuCnpj })
-          } else if (cpfOuCnpj.length === 14) {
+      } else if (cpfOuCnpj.length === 14) {
         navigation.navigate('CompanyConfirmation', { userIdentifier: cpfOuCnpj })
       }
 
@@ -35,57 +37,25 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+    <View style={LoginScreenStyles.container}>
+      <Text style={LoginScreenStyles.title}>Login</Text>
       <TextInput
-        style={styles.input}
+        style={LoginScreenStyles.input}
         placeholder="CPF ou CNPJ"
         onChangeText={text => setCPFouCNPJ(text)}
       />
       <TextInput
-        style={styles.input}
+        style={LoginScreenStyles.input}
         placeholder="Senha"
         secureTextEntry
         onChangeText={text => setSenha(text)}
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Entrar</Text>
+      <TouchableOpacity style={LoginScreenStyles.button} onPress={handleLogin}>
+        <Text style={LoginScreenStyles.buttonText}>Entrar</Text>
       </TouchableOpacity>
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+      {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20
-  },
-  input: {
-    width: '80%',
-    height: 40,
-    borderWidth: 1,
-    marginBottom: 10,
-    padding: 10
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5
-  },
-  buttonText: {
-    color: 'white',
-    textAlign: 'center'
-  },
-  errorText: {
-    color: 'red',
-    marginTop: 10
-  }
-});
 
 export default LoginScreen;

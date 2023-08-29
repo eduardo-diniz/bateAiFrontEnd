@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ButtonC from '../../../components/button/ButtonC';
-import { View, StyleSheet, Image, Text } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import ModalPopup from "../../../components/modal/ModalPoup";
 import { useNavigation } from '@react-navigation/native';
+import DepStyle from './ShareDepStyles'; 
 
 const ShareDep = () => {
     const navigation = useNavigation();  
@@ -22,91 +23,33 @@ const ShareDep = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.blueBlock}>
-                <Image source={require('../../../../assets/image_IT.png')} style={styles.image} />
+        <View style={DepStyle.container}>
+          <View style={DepStyle.blueBlock}>
+            <Image source={require('../../../../assets/image_IT.png')} style={DepStyle.image} />
+          </View>
+          <Text style={DepStyle.titleText}>Tecnologia da Informação</Text>
+          <View style={DepStyle.header}>
+            <Text style={DepStyle.codigoText}>Código: 72ABC</Text>
+            <View style={DepStyle.shareContainer}>
+              <ModalPopup visible={visible} text={message} status={status}>
+                <View style={{ alignItems: 'center' }}></View>
+                <ButtonC name={'Ok'} onPress={handleButtonPress1} />
+              </ModalPopup>
+              <ButtonC name={'Compartilhar'} onPress={handleButtonPress} />
             </View>
-            <Text style={styles.titleText}>Tecnologia da Informação</Text>
-            <View style={styles.header}>
-                <Text style={styles.codigoText}>Código: 72ABC</Text>
-                <View style={styles.shareContainer}>
-                    <ModalPopup visible={visible} text={message} status={status}>
-                        <View style={{ alignItems: 'center' }}></View>
-                        <ButtonC name={'Ok'} onPress={handleButtonPress1} />
-                    </ModalPopup>
-                    <ButtonC name={'Compartilhar'} onPress={handleButtonPress} />
-                </View>
-            </View>
-            <View style={styles.infoContainer}>
-                <Text style={styles.infoText}>Home Office: Yes</Text>
-                <Text style={styles.infoText}>Weekend: No</Text>
-                <Text style={styles.infoText}>Horas Noturnas: No</Text>
-                <Text style={styles.infoText}>Funcionários no setor: 12</Text>
-                <Text style={styles.infoText}>Funcionários ativos no setor: 8</Text>
-            </View>
+          </View>
+          <View style={DepStyle.infoContainer}>
+            <Text style={DepStyle.infoText}>Home Office: Yes</Text>
+            <Text style={DepStyle.infoText}>Weekend: No</Text>
+            <Text style={DepStyle.infoText}>Horas Noturnas: No</Text>
+            <Text style={DepStyle.infoText}>Funcionários no setor: 12</Text>
+            <Text style={DepStyle.infoText}>Funcionários ativos no setor: 8</Text>
+          </View>
         </View>
-    );
+      );
+      
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-    titleText: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginTop: 20,
-    },
-    blueBlock: {
-        backgroundColor: '#2D9CDB',
-        width: '100%',
-        height: '30%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 0,
-        opacity: 15,
-    },
-    image: {
-        width: 100,
-        height: 100,
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        paddingHorizontal: 20,
-        marginTop: 10,
-    },
-    codigoText: {
-        fontSize: 22,
-        fontWeight: 'bold',
-    },
-    shareContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    shareText: {
-        fontSize: 16,
-        marginRight: 5,
-    },
-    shareImage: {
-        width: 30,
-        height: 30,
-    },
-    infoContainer: {
-        alignItems: 'flex-start',
-        alignSelf: 'flex-start',
-        marginLeft: 20,
-        marginTop: 20,
-    },
-    infoText: {
-        fontSize: 16,
-        marginBottom: 5,
-    },
-});
 
 export default ShareDep;
 
