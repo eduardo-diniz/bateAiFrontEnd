@@ -13,7 +13,7 @@ const SignUp = () => {
   const [companyCode, setCompanyCode] = useState('');
   const navigation = useNavigation();
   const [senha, setSenha] = useState('');
-  const [departamentCode, setDepartamentCode] = useState(''); // Estado para o código da empresa
+  const [departamentCode, setDepartamentCode] = useState(''); 
   const [cargo, setCargo] = useState(''); 
   const handleSubmit = async () => {
 

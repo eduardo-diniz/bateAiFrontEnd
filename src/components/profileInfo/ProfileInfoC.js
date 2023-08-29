@@ -5,7 +5,7 @@ const ProfileInfoC = ({departament, nick ,name, picture}) => {
   return (
     <View>
         <View style={styles.container} >
-        <Text style={styles.title}>Olá, {nick}</Text>
+        {/* <Text style={styles.title}>Olá, {nick}</Text> */}
         <View style={styles.imageContainer}>
             <Image source={{ uri: picture }} style={styles.roundImage} />
         </View>

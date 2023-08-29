@@ -20,8 +20,8 @@ export const getCompanies = () => api.get(endpoints.companies);
 export const createCompany = (companyData) => api.post(endpoints.companies, companyData);
 export const getDepartment = () => api.get(endpoints.departments);
 export const getDepartmentByID = (id) => api.get(`${endpoints.departmentId}/${id}`);
-export const getUser = (cpf) => api.get(`${endpoints.userByCpf}/${cpf}`);
-export const getTimesheets = (cpf) => api.get(`${endpoints.timeSheets}/${cpf}`);
+export const getUser = (id) => api.get(`${endpoints.userByCpf}/${id}`);
+export const getTimesheets = (id) => api.get(`${endpoints.timeSheets}/${id}`);
 
 export const createTimesheet = (cpf, time) => api.post(endpoints.timeSheets, {CPF: cpf, Time: time});
 export const createDepartment = (departmentData) => api.post(endpoints.departments, departmentData);
