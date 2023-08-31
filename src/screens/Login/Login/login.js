@@ -16,7 +16,6 @@ const LoginScreen = ({ navigation }) => {
 
       const response = await login(cpfOuCnpj, senha);
 
-      console.log('Resposta do servidor:', response.data);
 
       const token = response.data.token;
 
@@ -34,6 +33,15 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+  const handleCoicheScreen = () => {
+    
+    navigation.navigate('CoicheScreen')
+
+  }
+
+
+  
+
   return (
     <View style={LoginScreenStyles.container}>
       <Text style={LoginScreenStyles.title}>Login</Text>
@@ -50,6 +58,9 @@ const LoginScreen = ({ navigation }) => {
       />
       <TouchableOpacity style={LoginScreenStyles.button} onPress={handleLogin}>
         <Text style={LoginScreenStyles.buttonText}>Entrar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={LoginScreenStyles.button} onPress={handleCoicheScreen}>
+        <Text style={LoginScreenStyles.buttonText}>SignUp</Text>
       </TouchableOpacity>
       {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
     </View>

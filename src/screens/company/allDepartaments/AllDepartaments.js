@@ -5,6 +5,7 @@ import AllDepStyle from './AllDepStyle';
 import { useAuth } from '../../../AuthContext';
 import { departmantByCNPJ, logout } from '../../../services/services';
 import { useRoute } from '@react-navigation/native';
+import ButtonCompact from "../../../components/buttonCompact/ButtonCompact";
 
 const AllDepartments = () => {
   const { token, logout: authLogout } = useAuth();
@@ -15,6 +16,18 @@ const AllDepartments = () => {
 
   const handlePress = (departamentId1) => {
     navigation.navigate('ShareDep',  { userIdentifier: userIdentifier, departamentId:  departamentId1});
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      authLogout(); 
+
+      navigation.navigate('LoginScreen');
+
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   const [userDepartments, setUserDepartments] = useState([]);
@@ -36,12 +49,12 @@ const AllDepartments = () => {
 
   return (
     <View style={AllDepStyle.container}>
+      <ButtonCompact name={'Logout'} onPress={handleLogout} />
       <Text style={AllDepStyle.departmentsText}>Departments</Text>
       <View style={AllDepStyle.objectsContainer}>
         {userDepartments.length > 0 ? (
           userDepartments.map((department, index) => (
             <View style={AllDepStyle.firstObject} key={index}>
-              {/* Replace this part with your actual data rendering */}
               <Image source={require('../../../../assets/image_IT.png')} style={AllDepStyle.image} />
               <TouchableOpacity onPress={() => handlePress(department)} style={AllDepStyle.clickable}>
                 <Text style={AllDepStyle.technologyText}>{department.Name}</Text>

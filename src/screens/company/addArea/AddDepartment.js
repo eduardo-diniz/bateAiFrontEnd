@@ -35,7 +35,7 @@ const AddDepartment = () => {
             DepartamentId:departamentId,
             CNPJ: taxId,
             AllowsRemoteWork: homeoffice,
-            AllowsOvertime: false,
+            AllowsOvertime: weekends,
             AllowsAI: false,
             AllowsWeekendWork: weekends,
           };

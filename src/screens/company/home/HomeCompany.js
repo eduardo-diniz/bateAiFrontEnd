@@ -1,4 +1,6 @@
 import ButtonC from "../../../components/button/ButtonC";
+import ButtonCompact from "../../../components/buttonCompact/ButtonCompact";
+
 import { Alert, View, StyleSheet, Image, Text } from 'react-native';
 import ListViewC from "../../../components/listView/ListViewC";
 import ProfileInfoC from "../../../components/profileInfo/ProfileInfoC";
@@ -53,8 +55,6 @@ const HomeCompany = () => {
   };
   return (
     <View>
-        <ButtonC name={'Logout'} onPress={handleLogout} />
-
         <ProfileInfoC name={user?.Name} nick={user?.CNPJ} picture={'https://img.freepik.com/vetores-premium/ilustracao-do-personagem-de-desenho-grafico-vetorial-da-empresa_516790-299.jpg?w=826'} />
 
       <View style={HomeStyle.viewButtons}>
@@ -62,6 +62,7 @@ const HomeCompany = () => {
         <ButtonC name={'All Departaments'} onPress={allDepartaments} />
       </View>    
      
+        <ButtonC name={'Logout'} onPress={handleLogout} />
     </View>
   );
 };

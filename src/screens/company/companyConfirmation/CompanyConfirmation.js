@@ -2,11 +2,23 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 import CompanyConfStyle from './CompanyConfStyle'
+import { useAuth } from '../../../AuthContext';
+import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const ConfirmacaoCompany = ({ navigation }) => {
+  
+    const route = useRoute();
+    const userIdentifier = route.params.userIdentifier;
 
-    const handleverRegistros = () => {
-        navigation.navigate('AddDepartament');
+    console.log('first', userIdentifier)
+    
+    const handleAddDepartament= () => {
+        navigation.navigate('AddDepartament', { userIdentifier: userIdentifier});
+    };
+
+    const handleHome = () => {
+        navigation.navigate('HomeCompany', { userIdentifier: userIdentifier })
     };
 
     return (
@@ -19,7 +31,9 @@ const ConfirmacaoCompany = ({ navigation }) => {
                     <Text style={CompanyConfStyle.message}>
                         Empresa criada com sucesso! {'\n'} Para começar a convidar funcionários, crie um departamento.
                     </Text>
-                    <ButtonC name={'criar departamento'} onPress={handleverRegistros} />
+                    <ButtonC name={'criar departamento'} onPress={handleAddDepartament} />
+                    <ButtonC name={'Ver Empresa'} onPress={handleHome} />
+
                 </View>
 
             </View>
