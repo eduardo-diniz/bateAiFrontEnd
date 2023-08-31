@@ -63,6 +63,11 @@ const AllDepStyle = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 10,
       },
+      noDepartmentsText: {
+        fontSize: 18,
+        marginTop: 10,
+        color: 'gray',
+      },
 });
 
 export default AllDepStyle;

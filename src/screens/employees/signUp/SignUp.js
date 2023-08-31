@@ -44,7 +44,7 @@ const SignUp = () => {
 
 try {
       const response = await createUser(userData);
-     // console.log('Resposta da criação da empresa:', response.data);
+      console.log('Resposta da criação da empresa:', response.data);
       
      navigation.navigate('Home',{ userIdentifier: userIdentifier });
 

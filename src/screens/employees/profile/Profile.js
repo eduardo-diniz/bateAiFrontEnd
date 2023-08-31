@@ -26,7 +26,6 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const userData = await getUser(userIdentifier);
-        console.log('userData', userData)
         setUser(userData?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);

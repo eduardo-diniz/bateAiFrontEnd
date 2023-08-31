@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createDepartment } from '../../../services/services';
 import addDepStyle from './addDepStyle'
 import { useTranslation } from 'react-i18next';
+import { useRoute } from '@react-navigation/native';
 
 const CustomRadioButton = ({ label, selected, onPress }) => (
     <TouchableOpacity
@@ -21,13 +22,14 @@ const CustomRadioButton = ({ label, selected, onPress }) => (
 const AddDepartment = () => {
     const { t } = useTranslation()
     const [department, setDepartment] = useState('');
-    const [departamentId, setDepartamentId] = useState('');
-    const [taxId, setTaxId] = useState('');
+    const [departamentId, setDepartamentId] = useState(''); 
     const [homeoffice, setHomeOffice] = useState(false);
     const [nightShift, setNightShift] = useState(false);
     const [weekends, setWeekends] = useState(false);
     const navigation = useNavigation();
-
+    const route = useRoute();
+    const userIdentifier = route.params.userIdentifier;
+    const [taxId, setTaxId] = useState(userIdentifier);
 
     const handleSubmit = async () => {
         const departmentData = {
@@ -35,21 +37,18 @@ const AddDepartment = () => {
             DepartamentId: departamentId,
             CNPJ: taxId,
             AllowsRemoteWork: homeoffice,
-            AllowsOvertime: false,
+            AllowsOvertime: weekends,
             AllowsAI: false,
             AllowsWeekendWork: weekends,
         };
 
         try {
             const response = await createDepartment(departmentData);
-            setMessage('Departamento criado com sucesso!');
-            console.log('Resposta da criação do departamento:', response.data);
-            navigation.navigate('ConfirmationSector');
-
-        } catch (error) {
+            navigation.navigate('ConfirmationSector', { userIdentifier: userIdentifier, departamentId:response?.data} );
+            console.log('response?.data', response?.data)
+          } catch (error) {
             console.error('Erro ao criar departamento:', error);
-            setMessage('Erro ao criar departamento');
-        }
+          }
     };
 
     return (
@@ -74,8 +73,8 @@ const AddDepartment = () => {
                     <Text style={addDepStyle.label}>Tax ID (CNPJ):</Text>
                     <TextInput
                         style={addDepStyle.input}
-                        value={taxId}
-                        onChangeText={setTaxId}
+                        value={userIdentifier}
+                        
                     />
                     <Text style={addDepStyle.label}>Allow home office:</Text>
                     <View style={addDepStyle.radioButtonContainer}>

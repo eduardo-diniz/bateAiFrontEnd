@@ -16,6 +16,7 @@
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "expo": "~49.0.7",
+    "expo-linking": "~5.0.2",
     "expo-local-authentication": "~13.4.1",
     "expo-status-bar": "~1.6.0",
     "i18n-js": "^4.2.2",

@@ -2,13 +2,25 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 import CompanyConfStyle from './CompanyConfStyle'
+import { useAuth } from '../../../AuthContext';
+import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 const ConfirmacaoCompany = ({ navigation }) => {
     const { t } = useTranslation()
+  
+    const route = useRoute();
+    const userIdentifier = route.params.userIdentifier;
 
-    const handleverRegistros = () => {
-        navigation.navigate('AddDepartament');
+    console.log('first', userIdentifier)
+    
+    const handleAddDepartament= () => {
+        navigation.navigate('AddDepartament', { userIdentifier: userIdentifier});
+    };
+
+    const handleHome = () => {
+        navigation.navigate('HomeCompany', { userIdentifier: userIdentifier })
     };
 
     return (
@@ -22,7 +34,9 @@ const ConfirmacaoCompany = ({ navigation }) => {
                         {t('Thecompanysuccessfullycreated')} {'\n'}
                         {t('Tostartinvitingemployeesreateadepartment')}
                     </Text>
-                    <ButtonC name={'criar departamento'} onPress={handleverRegistros} />
+                    <ButtonC name={'criar departamento'} onPress={handleAddDepartament} />
+                    <ButtonC name={'Ver Empresa'} onPress={handleHome} />
+
                 </View>
 
             </View>

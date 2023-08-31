@@ -20,6 +20,7 @@ import ShareDep from './src/screens/company/shareDep/ShareDep'
 import ConfirmationSector from './src/screens/company/confirmaçãoSetor/ConfirmationSector'
 import LoginScreen from './src/screens/Login/Login/login'
 import TechnologyScreen from './src/screens/company/departamentConfirmation/DepartamentConfirmation'
+import HomeCompany from './src/screens/company/home/HomeCompany'
 import { AuthProvider } from './src/AuthContext';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -42,6 +43,7 @@ i18n
 
 AppRegistry.registerComponent('MyApp', () => App);
 
+
 export default function App() {
   return (
     <AuthProvider>
@@ -49,6 +51,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator initialRouteName="LoginScreen">
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="HomeCompany" component={HomeCompany} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
           <Stack.Screen name="SignUp" component={SignUp} />
@@ -62,6 +65,8 @@ export default function App() {
           <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="TechnologyScreen" component={TechnologyScreen} />
+
+
         </Stack.Navigator>
         <StatusBar style="auto" />
       </View>

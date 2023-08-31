@@ -6,7 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { createCompany } from '../../../services/services';
 import AddCompanyStyle from './AddCompanyStyle'
 import { useTranslation } from 'react-i18next';
-
+import { useAuth } from '../../../AuthContext';
+import { useRoute } from '@react-navigation/native';
 
 const AddCompany = () => {
   const { t } = useTranslation()
@@ -16,6 +17,11 @@ const AddCompany = () => {
   const [senha, setSenha] = useState('');
 
   const navigation = useNavigation();
+  const { token, logout: authLogout } = useAuth();
+  
+  const route = useRoute();
+  const userIdentifier = CNPJ;
+
 
   const handleCreateCompany = async () => {
     const companyData = {
@@ -27,9 +33,8 @@ const AddCompany = () => {
 
     try {
       const response = await createCompany(companyData);
-      console.log('Resposta da criação da empresa:', response.data);
-
-      navigation.navigate('CompanyConfirmation');
+      console.log('userIdentifier', userIdentifier)
+      navigation.navigate('CompanyConfirmation',  { userIdentifier: userIdentifier});
 
     } catch (error) {
       console.error('Erro ao criar empresa:', error);
@@ -71,6 +76,7 @@ const AddCompany = () => {
             value={senha}
             onChangeText={setSenha}
             keyboardType="default"
+            secureTextEntry={true}
           />
         </View>
         <ButtonC style={AddCompanyStyle.button} name={t('submit')} onPress={handleCreateCompany} />
