@@ -42,8 +42,8 @@ const AddDepartment = () => {
       
           try {
             const response = await createDepartment(departmentData);
-            navigation.navigate('ConfirmationSector', { userIdentifier: userIdentifier, departamentId:departamentId} );
-
+            navigation.navigate('ConfirmationSector', { userIdentifier: userIdentifier, departamentId:response?.data} );
+            console.log('response?.data', response?.data)
           } catch (error) {
             console.error('Erro ao criar departamento:', error);
           }

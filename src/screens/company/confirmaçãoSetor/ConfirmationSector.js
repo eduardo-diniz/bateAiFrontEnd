@@ -8,13 +8,14 @@ const DepartamentConfirmation = ({ navigation }) => {
     
     const route = useRoute();
     const userIdentifier = route.params.userIdentifier;
-    const departamentId = route.params.departamentId;
+    const departament = route.params.departamentId;
     const handleverRegistros = () => {
         navigation.navigate('AllDepartments',  { userIdentifier: userIdentifier});
     };
+    console.log('departament', departament)
 
-    const handleverRegistros2 = () => {
-        navigation.navigate('ShareDep',  { userIdentifier: userIdentifier, departamentId: departamentId});
+    const handleverRegistros2 = (departament) => {
+        navigation.navigate('ShareDep',  { userIdentifier: userIdentifier, departamentId: departament});
     };
 
     return (
@@ -27,7 +28,7 @@ const DepartamentConfirmation = ({ navigation }) => {
                     <Text style={ConfSectorStyle.message}>
                     Setor criado com sucesso! {'\n'} Já pode convidar seus funcionarios. {'\n'} Ou se preferir pode criar outros setores!
                     </Text>
-                    <ButtonC name={'Compartilhar Setor'} onPress={handleverRegistros2} />
+                    <ButtonC name={'Compartilhar Setor'} onPress={() => handleverRegistros2(departament)} />
                     <ButtonC name={'Ver setores'} onPress={handleverRegistros} />
                 </View>
 
