@@ -2,8 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 import ConfSectorStyle from './ConfSectorStyle'
+import { useTranslation } from 'react-i18next';
+
 
 const DepartamentConfirmation = ({ navigation }) => {
+    const { t } = useTranslation();
 
     const handleverRegistros = () => {
         navigation.navigate('AllDepartments');
@@ -21,10 +24,12 @@ const DepartamentConfirmation = ({ navigation }) => {
                     <Image source={require('../../../../assets/success.png')} style={ConfSectorStyle.image} />
 
                     <Text style={ConfSectorStyle.message}>
-                    Setor criado com sucesso! {'\n'} Já pode convidar seus funcionarios. {'\n'} Ou se preferir pode criar outros setores!
+                    {t('thedepartmenthasbeensuccessfullycreated!')} {'\n'} 
+                    {t('youcannowinviteyouremployees!')}{'\n'} 
+                    {t('Oorifyoupreferyoucancreateotherdepartments!')}
                     </Text>
-                    <ButtonC name={'convidar funcionários'} onPress={handleverRegistros} />
-                    <ButtonC name={'criar setor'} onPress={handleverRegistros2} />
+                    <ButtonC name={t('inviteemployees')} onPress={handleverRegistros} />
+                    <ButtonC name={t('createdepartment')} onPress={handleverRegistros2} />
                 </View>
 
             </View>

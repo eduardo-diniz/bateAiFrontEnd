@@ -2,9 +2,11 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import CoicheScreenStyles from './CoicheScreenStyles'; // Importando os estilos
+import CoicheScreenStyles from './CoicheScreenStyles'; 
+import { useTranslation } from 'react-i18next';
 
 const CoicheScreen = () => {
+  const { t } = useTranslation();
   const navigation = useNavigation();
 
   const handleVerPerfilCompany = () => {
@@ -20,7 +22,7 @@ const CoicheScreen = () => {
   return (
     <View style={CoicheScreenStyles.container}>
       <View style={CoicheScreenStyles.rectangle}>
-        <Text style={CoicheScreenStyles.questionText}>Você é?</Text>
+        <Text style={CoicheScreenStyles.questionText}>{t('youare')}</Text>
         <View style={CoicheScreenStyles.imageContainer}>
           <TouchableOpacity
             style={CoicheScreenStyles.imageWrapper}
@@ -38,7 +40,7 @@ const CoicheScreen = () => {
               style={[CoicheScreenStyles.image, highlightCompany && CoicheScreenStyles.highlightedImage]}
               source={require('../../../../assets/image_company.png')}
             />
-            <Text style={CoicheScreenStyles.imageText}>Empresa</Text>
+            <Text style={CoicheScreenStyles.imageText}>{t('company')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={CoicheScreenStyles.imageWrapper}
@@ -56,7 +58,7 @@ const CoicheScreen = () => {
               style={[CoicheScreenStyles.image, highlightUser && CoicheScreenStyles.highlightedImage]}
               source={require('../../../../assets/image_user.png')}
             />
-            <Text style={CoicheScreenStyles.imageText}>Funcionário</Text>
+            <Text style={CoicheScreenStyles.imageText}>{t('employee')}</Text>
           </TouchableOpacity>
         </View>
       </View>

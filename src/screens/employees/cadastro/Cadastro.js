@@ -4,8 +4,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
 import CadastroStyle  from './CadastroStyle'
+import { useTranslation } from 'react-i18next';
+
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCPF] = useState('');
@@ -21,16 +24,16 @@ const SignUp = () => {
   return (
     <SafeAreaView style={CadastroStyle.container}>
       <KeyboardAwareScrollView contentContainerStyle={CadastroStyle.scrollContainer}>
-        <Text style={CadastroStyle.title}>Create Profile</Text>
+        <Text style={CadastroStyle.title}>{t('createprofile')}</Text>
         <View style={CadastroStyle.form}>
-          <Text style={CadastroStyle.label}>Your name:</Text>
+          <Text style={CadastroStyle.label}>{t('yourname')}</Text>
           <TextInput
             style={CadastroStyle.input}
             value={name}
             onChangeText={setName}
           />
 
-          <Text style={CadastroStyle.label}>Email:</Text>
+          <Text style={CadastroStyle.label}>{t('email')}</Text>
           <TextInput
             style={CadastroStyle.input}
             value={email}
@@ -45,20 +48,20 @@ const SignUp = () => {
             onChangeText={setCPF}
             keyboardType="numeric"
           />
-           <Text style={CadastroStyle.label}>Password:</Text>
+           <Text style={CadastroStyle.label}>{t('password')}</Text>
           <TextInput
             style={CadastroStyle.input}
             value={senha}
             onChangeText={setSenha}
           />
-          <Text style={CadastroStyle.label}>Company Code:</Text>
+          <Text style={CadastroStyle.label}>{t('companycode')}</Text>
           <TextInput
             style={CadastroStyle.input}
             value={companyCode}
             onChangeText={setCompanyCode}
           />
         </View>
-        <ButtonC style={CadastroStyle.button} name="Submit" onPress={handleSubmit} />
+        <ButtonC style={CadastroStyle.button} name={t('submit')} onPress={handleSubmit} />
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );

@@ -9,8 +9,12 @@ import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
 import ProfileStyles from './ProfileStyle'; // Importando os estilos
+import { useTranslation } from 'react-i18next';
+
 
 const Profile = () => {
+  const { t } = useTranslation();
+
 
   const { token, logout: authLogout } = useAuth();
   const route = useRoute();
@@ -36,7 +40,8 @@ const Profile = () => {
   return (
     <View style={ProfileStyles.container}>
       <View style={ProfileStyles.profileInfo}>
-        <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
+        <ProfileInfoC departament={'T.I'} name={user?.name} 
+        nick={user?.cpf} picture="https://placekitten.com/200/200" />
       </View>
 
       <ScrollView style={ProfileStyles.labelsContainer}>
@@ -51,26 +56,26 @@ const Profile = () => {
 
 <Label
           iconSource={require('../../../../assets/favicon.png')}
-          title="Horas Noturnas"
-          description={user?.horasNoturnas ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          title={t('nighthours')}
+          description={user?.horasNoturnas ? t('yes') : t('no') } 
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
           title="Home Office"
-          description={user?.homeOffice ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          description={user?.homeOffice ? t('yes') : t('no')} 
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
-          title="Trabalho finais de semana"
-          description={user?.finalDeSemana ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          title={t('workattheweekend')}
+          description={user?.finalDeSemana ? t('yes') : t('no')} 
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
-          title="Lembrar por I.A"
-          description={user?.aceitaIA ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          title={t('RememberbyAI')}
+          description={user?.aceitaIA ? t('yes') : t('no')} 
         />
       </ScrollView>
     </View>

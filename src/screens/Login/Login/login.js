@@ -4,8 +4,14 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../../../services/services'; // Importando a função de login
 import LoginScreenStyles from './LoginScreenStyles'; // Importando os estilos
+import { useTranslation } from 'react-i18next';
+import ButtonT from '../../../components/button_translate/ButtonT';
+
+
 
 const LoginScreen = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const [cpfOuCnpj, setCPFouCNPJ] = useState('');
   const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
@@ -41,18 +47,19 @@ const LoginScreen = ({ navigation }) => {
       <Text style={LoginScreenStyles.title}>Login</Text>
       <TextInput
         style={LoginScreenStyles.input}
-        placeholder="CPF ou CNPJ"
+        placeholder={t('placeholdercpfcnpj')}
         onChangeText={text => setCPFouCNPJ(text)}
       />
       <TextInput
         style={LoginScreenStyles.input}
-        placeholder="Senha"
+        placeholder={t('password')}
         secureTextEntry
         onChangeText={text => setSenha(text)}
       />
       <TouchableOpacity style={LoginScreenStyles.button} onPress={handleLogin}>
-        <Text style={LoginScreenStyles.buttonText}>Entrar</Text>
+        <Text style={LoginScreenStyles.buttonText}>{t('submit')}</Text>
       </TouchableOpacity>
+      <ButtonT style={LoginScreenStyles.buttonT}/>
       {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
     </View>
   );

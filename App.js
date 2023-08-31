@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AppRegistry } from 'react-native';
+
 import Home from './src/screens/employees/homePage/Home';
 import Profile from './src/screens/employees/profile/Profile';
 import React from 'react';
@@ -19,6 +21,26 @@ import ConfirmationSector from './src/screens/company/confirmaçãoSetor/Confirm
 import LoginScreen from './src/screens/Login/Login/login'
 import TechnologyScreen from './src/screens/company/departamentConfirmation/DepartamentConfirmation'
 import { AuthProvider } from './src/AuthContext';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslation from './src/locales/en.json'; // Importar suas traduções
+import ptTranslation from './src/locales/pt.json';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    compatibilityJSON: 'v3',
+    resources: {
+      en: { translation: enTranslation },
+      pt: { translation: ptTranslation }
+    },
+    lng: 'pt', // Defina o idioma padrão aqui
+    interpolation: {
+      escapeValue: false // Permite que você use variáveis nas traduções
+    }
+  });
+
+AppRegistry.registerComponent('MyApp', () => App);
 
 export default function App() {
   return (

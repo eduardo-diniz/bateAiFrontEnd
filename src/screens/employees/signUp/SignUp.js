@@ -5,8 +5,12 @@ import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
 import { getDepartmentByID, createUser } from '../../../services/services';
 import SignUpStyles from './SignUpStyles'; // Importando os estilos
+import { useTranslation } from 'react-i18next';
+
 
 const SignUp = () => {
+  const { t } = useTranslation();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCPF] = useState('');
@@ -34,33 +38,35 @@ const SignUp = () => {
       finalDeSemana: departmentData.AllowsWeekendWork
     };
     
+    const userIdentifier = cpf;
+    
     console.log(userData)
 
 try {
       const response = await createUser(userData);
-      console.log('Resposta da criação da empresa:', response.data);
+     // console.log('Resposta da criação da empresa:', response.data);
       
-      navigation.navigate('Home');
+     navigation.navigate('Home',{ userIdentifier: userIdentifier });
 
     } catch (error) {
-      console.error('Erro ao criar empresa:', error);
-      setMessage('Erro ao criar empresa');
+      //console.error('Erro ao criar empresa:', error);
+      setMessage(t('errorcreatecompany')); // Invoca a função de tradução
     }
   };
 
   return (
     <SafeAreaView style={SignUpStyles.container}>
       <KeyboardAwareScrollView contentContainerStyle={SignUpStyles.scrollContainer}>
-        <Text style={SignUpStyles.title}>Create Profile</Text>
+        <Text style={SignUpStyles.title}>{t('createprofile')}</Text>
         <View style={SignUpStyles.form}>
-          <Text style={SignUpStyles.label}>Your name:</Text>
+          <Text style={SignUpStyles.label}>{t('yourname')}</Text>
           <TextInput
             style={SignUpStyles.input}
             value={name}
             onChangeText={setName}
           />
 
-          <Text style={SignUpStyles.label}>Email:</Text>
+          <Text style={SignUpStyles.label}>{t('email')}</Text>
           <TextInput
             style={SignUpStyles.input}
             value={email}
@@ -75,33 +81,34 @@ try {
             onChangeText={setCPF}
             keyboardType="numeric"
           />
-        <Text style={SignUpStyles.label}>Password:</Text>
+        <Text style={SignUpStyles.label}>{t('password')}</Text>
           <TextInput
             style={SignUpStyles.input}
             value={senha}
             onChangeText={setSenha}
+            secureTextEntry={true}
           />
-          <Text style={SignUpStyles.label}>departament Code:</Text>
+          <Text style={SignUpStyles.label}>{t('departamentcode')}</Text>
           <TextInput
             style={SignUpStyles.input}
             value={departamentCode}
             onChangeText={setDepartamentCode}
           />
-        <Text style={SignUpStyles.label}>Company Code:</Text>
+        <Text style={SignUpStyles.label}>{t('companycode')}</Text>
         <TextInput
           style={SignUpStyles.input}
           value={companyCode}
           onChangeText={setCompanyCode}
         />
 
-        <Text style={SignUpStyles.label}>Cargo:</Text>
+        <Text style={SignUpStyles.label}>{t('jobposition')}</Text>
         <TextInput
           style={SignUpStyles.input}
           value={cargo}
           onChangeText={setCargo}
         />
         </View>
-        <ButtonC style={SignUpStyles.button} name="Submit" onPress={handleSubmit} />
+        <ButtonC style={SignUpStyles.button} name={t('submit')} onPress={handleSubmit} />
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );

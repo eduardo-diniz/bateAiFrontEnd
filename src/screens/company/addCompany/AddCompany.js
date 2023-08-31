@@ -5,8 +5,11 @@ import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
 import { createCompany } from '../../../services/services';
 import AddCompanyStyle from './AddCompanyStyle'
+import { useTranslation } from 'react-i18next';
+
 
 const AddCompany = () => {
+  const { t } = useTranslation()
   const [name, setName] = useState('');
   const [fictionalName, setFictionalName] = useState('');
   const [CNPJ, setCNPJ] = useState('');
@@ -25,7 +28,7 @@ const AddCompany = () => {
     try {
       const response = await createCompany(companyData);
       console.log('Resposta da criação da empresa:', response.data);
-      
+
       navigation.navigate('CompanyConfirmation');
 
     } catch (error) {
@@ -37,16 +40,16 @@ const AddCompany = () => {
   return (
     <SafeAreaView style={AddCompanyStyle.container}>
       <KeyboardAwareScrollView contentContainerStyle={AddCompanyStyle.scrollContainer}>
-        <Text style={AddCompanyStyle.title}>Create Company</Text>
+        <Text style={AddCompanyStyle.title}>{t('createcompany')}</Text>
         <View style={AddCompanyStyle.form}>
-          <Text style={AddCompanyStyle.label}>Company Name:</Text>
+          <Text style={AddCompanyStyle.label}>{('companyname')}</Text>
           <TextInput
             style={AddCompanyStyle.input}
             value={name}
             onChangeText={setName}
           />
 
-          <Text style={AddCompanyStyle.label}>Fictional Name:</Text>
+          <Text style={AddCompanyStyle.label}>{t('fictionalname')}</Text>
           <TextInput
             style={AddCompanyStyle.input}
             value={fictionalName}
@@ -62,7 +65,7 @@ const AddCompany = () => {
             keyboardType="numeric"
           />
 
-          <Text style={AddCompanyStyle.label}>Password:</Text>
+          <Text style={AddCompanyStyle.label}>{t('passowrd')}</Text>
           <TextInput
             style={AddCompanyStyle.input}
             value={senha}
@@ -70,7 +73,7 @@ const AddCompany = () => {
             keyboardType="default"
           />
         </View>
-        <ButtonC style={AddCompanyStyle.button} name="Submit" onPress={handleCreateCompany} />
+        <ButtonC style={AddCompanyStyle.button} name={t('submit')} onPress={handleCreateCompany} />
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );

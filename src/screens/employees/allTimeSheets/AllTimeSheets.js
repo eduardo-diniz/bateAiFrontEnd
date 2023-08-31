@@ -9,50 +9,67 @@ import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
 import { getUser, getTimesheets, createTimesheet, logout } from '../../../services/services';
 import { SheetStyle } from './AllTimeSheetsStyle'
+import { useTranslation } from 'react-i18next';
+import { utcToZonedTime } from 'date-fns-tz';
+import { format } from 'date-fns';
+
+import AllTimeSheetsStyle from './AllTimeSheetsStyle'
+
 
 const AllTimeSheets = () => {
+  const { t } = useTranslation();
+  const { token, logout: authLogout } = useAuth();
+  const route = useRoute();
+  const [timeSheets, setTimeSheets] = useState();
 
-    const { token, logout: authLogout } = useAuth();
-    const route = useRoute();
-    const [timeSheets, setTimeSheets] = useState(); 
+  const userIdentifier = route.params.userIdentifier;
 
-    const userIdentifier = route.params.userIdentifier;
+  const [user, setUser] = useState();
 
-    const [user, setUser] = useState(); 
+  console.log('userIdentifier', userIdentifier)
 
-    console.log('userIdentifier', userIdentifier)
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUser(userIdentifier);
+        const timeSheetData = await getTimesheets(userIdentifier);
+        const brazilTimezone = 'America/Sao_Paulo';
+        const formattedTimeSheets = timeSheetData?.data.map(item => ({
+          ...item,
+          Time: format(
+            utcToZonedTime(new Date(item.Time), brazilTimezone),
+            'yyyy-MM-dd HH:mm:ss',
+            { timeZone: brazilTimezone }
+          ),
+        }));
+        //console.log('fomart', formattedTimeSheets)
+        setTimeSheets(formattedTimeSheets);
 
-    useEffect(() => {
-        const fetchUserData = async () => {
-          try {
-            const userData = await getUser(userIdentifier);
-            const timeSheetData = await getTimesheets(userIdentifier);
-    
-            setTimeSheets(timeSheetData?.data)
-            setUser(userData?.data);
-            console.log('timeSheets', timeSheets)
+        //setTimeSheets(timeSheetData?.data)
+        setUser(userData?.data);
+        //console.log('timeSheets', timeSheets)
 
-          } catch (error) {
-            console.error("Error fetching user data:", error);
-          }
-        };
-    
-        fetchUserData();
-      }, [userIdentifier, token]);
-    return (
-        <View style={SheetStyle.container}>
-            <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
-            <View style={SheetStyle.titleContainer}>
-                <Text style={SheetStyle.titleText}>Todos Registros</Text>
-            </View>
-            <ScrollView style={SheetStyle.listViewContainer}>
-                {!timeSheets? <Text>Loading...</Text> : (
-                    <ListViewC name={''} list={timeSheets} />
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-                ) }
-            </ScrollView>
-        </View>
-    );
+    fetchUserData();
+  }, [userIdentifier, token]);
+  return (
+    <View style={AllTimeSheetsStyle.container}>
+      <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
+      <View style={AllTimeSheetsStyle.titleContainer}>
+        <Text style={AllTimeSheetsStyle.titleText}>{t('allrecords')}</Text>
+      </View>
+      <ScrollView style={AllTimeSheetsStyle.listViewContainer}>
+        {!timeSheets ? <Text>{('loading')}</Text> : (
+          <ListViewC name={''} list={timeSheets} />
+
+        )}
+      </ScrollView>
+    </View>
+  );
 }
 
 

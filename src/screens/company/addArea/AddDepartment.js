@@ -5,6 +5,7 @@ import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
 import { createDepartment } from '../../../services/services';
 import addDepStyle from './addDepStyle'
+import { useTranslation } from 'react-i18next';
 
 const CustomRadioButton = ({ label, selected, onPress }) => (
     <TouchableOpacity
@@ -18,8 +19,9 @@ const CustomRadioButton = ({ label, selected, onPress }) => (
 );
 
 const AddDepartment = () => {
+    const { t } = useTranslation()
     const [department, setDepartment] = useState('');
-    const [departamentId, setDepartamentId] = useState(''); 
+    const [departamentId, setDepartamentId] = useState('');
     const [taxId, setTaxId] = useState('');
     const [homeoffice, setHomeOffice] = useState(false);
     const [nightShift, setNightShift] = useState(false);
@@ -30,39 +32,39 @@ const AddDepartment = () => {
     const handleSubmit = async () => {
         const departmentData = {
             Name: department,
-            DepartamentId:departamentId,
+            DepartamentId: departamentId,
             CNPJ: taxId,
             AllowsRemoteWork: homeoffice,
             AllowsOvertime: false,
             AllowsAI: false,
             AllowsWeekendWork: weekends,
-          };
-      
-          try {
+        };
+
+        try {
             const response = await createDepartment(departmentData);
             setMessage('Departamento criado com sucesso!');
             console.log('Resposta da criação do departamento:', response.data);
             navigation.navigate('ConfirmationSector');
 
-          } catch (error) {
+        } catch (error) {
             console.error('Erro ao criar departamento:', error);
             setMessage('Erro ao criar departamento');
-          }
+        }
     };
 
     return (
         <SafeAreaView style={addDepStyle.container}>
             <KeyboardAwareScrollView contentContainerStyle={addDepStyle.scrollContainer}>
-                <Text style={addDepStyle.title}>Add Department</Text>
+                <Text style={addDepStyle.title}>{t('adddepartment')}</Text>
                 <View style={addDepStyle.form}>
-                    <Text style={addDepStyle.label}>Department:</Text>
+                    <Text style={addDepStyle.label}>{t('departament')}</Text>
                     <TextInput
                         style={addDepStyle.input}
                         value={department}
                         onChangeText={setDepartment}
                     />
 
-                    <Text style={addDepStyle.label}>Trade Name:</Text>
+                    <Text style={addDepStyle.label}>{t('departamentID')}</Text>
                     <TextInput
                         style={addDepStyle.input}
                         value={departamentId}
@@ -88,7 +90,7 @@ const AddDepartment = () => {
                             onPress={() => setHomeOffice('no')}
                         />
                     </View>
-                    
+
                     <Text style={addDepStyle.label}>Allow night shifts:</Text>
                     <View style={addDepStyle.radioButtonContainer}>
                         <CustomRadioButton
@@ -102,7 +104,7 @@ const AddDepartment = () => {
                             onPress={() => setNightShift('no')}
                         />
                     </View>
-                    
+
                     <Text style={addDepStyle.label}>Allow weekends:</Text>
                     <View style={addDepStyle.radioButtonContainer}>
                         <CustomRadioButton

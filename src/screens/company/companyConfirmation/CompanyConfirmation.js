@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 import CompanyConfStyle from './CompanyConfStyle'
+import { useTranslation } from 'react-i18next';
 
 const ConfirmacaoCompany = ({ navigation }) => {
+    const { t } = useTranslation()
 
     const handleverRegistros = () => {
         navigation.navigate('AddDepartament');
@@ -17,7 +19,8 @@ const ConfirmacaoCompany = ({ navigation }) => {
                     <Image source={require('../../../../assets/success.png')} style={CompanyConfStyle.image} />
 
                     <Text style={CompanyConfStyle.message}>
-                        Empresa criada com sucesso! {'\n'} Para começar a convidar funcionários, crie um departamento.
+                        {t('Thecompanysuccessfullycreated')} {'\n'}
+                        {t('Tostartinvitingemployeesreateadepartment')}
                     </Text>
                     <ButtonC name={'criar departamento'} onPress={handleverRegistros} />
                 </View>

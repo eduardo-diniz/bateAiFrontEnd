@@ -18,7 +18,7 @@ const LoginScreenStyles = StyleSheet.create({
     padding: 10
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#3498db',
     padding: 10,
     borderRadius: 5
   },
@@ -29,7 +29,7 @@ const LoginScreenStyles = StyleSheet.create({
   errorText: {
     color: 'red',
     marginTop: 10
-  }
+  },
 });
 
 export default LoginScreenStyles;
