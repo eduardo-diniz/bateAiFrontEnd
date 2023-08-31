@@ -24,7 +24,6 @@ const AddCompany = () => {
 
     try {
       const response = await createCompany(companyData);
-      console.log('Resposta da criação da empresa:', response.data);
       
       navigation.navigate('CompanyConfirmation');
 

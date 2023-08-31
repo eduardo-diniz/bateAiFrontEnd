@@ -19,6 +19,7 @@ import ConfirmationSector from './src/screens/company/confirmaçãoSetor/Confirm
 import LoginScreen from './src/screens/Login/Login/login'
 import TechnologyScreen from './src/screens/company/departamentConfirmation/DepartamentConfirmation'
 import { AuthProvider } from './src/AuthContext';
+import HomeCompany from './src/screens/company/home/HomeCompany'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <View style={styles.container}>
         <Stack.Navigator initialRouteName="LoginScreen">
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="HomeCompany" component={HomeCompany} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
           <Stack.Screen name="SignUp" component={SignUp} />
@@ -40,6 +42,8 @@ export default function App() {
           <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="TechnologyScreen" component={TechnologyScreen} />
+
+
         </Stack.Navigator>
         <StatusBar style="auto" />
       </View>

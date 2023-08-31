@@ -20,7 +20,6 @@ const AllTimeSheets = () => {
 
     const [user, setUser] = useState(); 
 
-    console.log('userIdentifier', userIdentifier)
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -30,7 +29,6 @@ const AllTimeSheets = () => {
     
             setTimeSheets(timeSheetData?.data)
             setUser(userData?.data);
-            console.log('timeSheets', timeSheets)
 
           } catch (error) {
             console.error("Error fetching user data:", error);

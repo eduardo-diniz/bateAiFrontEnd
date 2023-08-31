@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Image, View,Text } from 'react-native';
 
 const ProfileInfoC = ({departament, nick ,name, picture}) => {
+  
+  
   return (
     <View>
         <View style={styles.container} >

@@ -2,15 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import ButtonC from '../../../components/button/ButtonC';
 import ConfSectorStyle from './ConfSectorStyle'
+import { useRoute } from '@react-navigation/native';
 
 const DepartamentConfirmation = ({ navigation }) => {
-
+    
+    const route = useRoute();
+    const userIdentifier = route.params.userIdentifier;
+    const departamentId = route.params.departamentId;
     const handleverRegistros = () => {
-        navigation.navigate('AllDepartments');
+        navigation.navigate('AllDepartments',  { userIdentifier: userIdentifier});
     };
 
     const handleverRegistros2 = () => {
-        navigation.navigate('AddCompany');
+        navigation.navigate('ShareDep',  { userIdentifier: userIdentifier, departamentId: departamentId});
     };
 
     return (
@@ -23,8 +27,8 @@ const DepartamentConfirmation = ({ navigation }) => {
                     <Text style={ConfSectorStyle.message}>
                     Setor criado com sucesso! {'\n'} Já pode convidar seus funcionarios. {'\n'} Ou se preferir pode criar outros setores!
                     </Text>
-                    <ButtonC name={'convidar funcionários'} onPress={handleverRegistros} />
-                    <ButtonC name={'criar setor'} onPress={handleverRegistros2} />
+                    <ButtonC name={'Compartilhar Setor'} onPress={handleverRegistros2} />
+                    <ButtonC name={'Ver setores'} onPress={handleverRegistros} />
                 </View>
 
             </View>

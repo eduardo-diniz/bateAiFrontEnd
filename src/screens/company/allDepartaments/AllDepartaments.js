@@ -1,44 +1,74 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AllDepStyle from './AllDepStyle'
-
+import AllDepStyle from './AllDepStyle';
+import { useAuth } from '../../../AuthContext';
+import { departmantByCNPJ, logout } from '../../../services/services';
+import { useRoute } from '@react-navigation/native';
 
 const AllDepartments = () => {
+  const { token, logout: authLogout } = useAuth();
   const navigation = useNavigation();
+  const route = useRoute();
+  const userIdentifier = route.params.userIdentifier;
+  const departamentId = route.params.departamentId;
 
-  const handlePress = () => {
-    navigation.navigate('ShareDep');
+  const handlePress = (departamentId1) => {
+    navigation.navigate('ShareDep',  { userIdentifier: userIdentifier, departamentId:  departamentId1});
   };
+
+  const [userDepartments, setUserDepartments] = useState([]);
+
+  useEffect(() => {
+    const fetchUserDepartments = async () => {
+      try {
+        const response = await departmantByCNPJ(userIdentifier);
+        const userData = response?.data || [];
+        setUserDepartments(userData);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setUserDepartments([]);
+      }
+    };
+  
+    fetchUserDepartments();
+  }, [userIdentifier, token]);
 
   return (
     <View style={AllDepStyle.container}>
       <Text style={AllDepStyle.departmentsText}>Departments</Text>
       <View style={AllDepStyle.objectsContainer}>
-        <View style={AllDepStyle.firstObject}>
-          <Image source={require('../../../../assets/image_IT.png')} style={AllDepStyle.image} />
-          <TouchableOpacity onPress={handlePress} style={AllDepStyle.clickable}>
-            <Text style={AllDepStyle.technologyText}>Information Technology</Text>
-            <View style={AllDepStyle.labelsContainer}>
-              <Text style={AllDepStyle.hoText}>Remote</Text>
-              <Text style={AllDepStyle.fdsText}>Weekends</Text>
-              <Text style={AllDepStyle.hnText}>Night Shift</Text>
+        {userDepartments.length > 0 ? (
+          userDepartments.map((department, index) => (
+            <View style={AllDepStyle.firstObject} key={index}>
+              {/* Replace this part with your actual data rendering */}
+              <Image source={require('../../../../assets/image_IT.png')} style={AllDepStyle.image} />
+              <TouchableOpacity onPress={() => handlePress(department)} style={AllDepStyle.clickable}>
+                <Text style={AllDepStyle.technologyText}>{department.Name}</Text>
+                <View style={AllDepStyle.labelsContainer}>
+                <Text style={AllDepStyle.hoText}>
+                    <Text style={{ color: department.AllowsRemoteWork ? 'green' : 'red' }}>
+                    Remote{' '}
+                    </Text>
+                  </Text>
+                  <Text style={AllDepStyle.fdsText}>
+                    <Text style={{ color: department.AllowsWeekendWork ? 'green' : 'red' }}>
+                    Weekends{' '}
+                    </Text>
+                  </Text>
+                  <Text style={AllDepStyle.hnText}>
+                    <Text style={{ color: department.AllowsOvertime ? 'green' : 'red' }}>
+                    Night Shift{' '}
+                    </Text>
+                  </Text>
+                </View>
+                <Text style={AllDepStyle.addedText}>Added on {new Date(department.createdAt).toISOString().split('T')[0]}</Text>
+              </TouchableOpacity>
             </View>
-            <Text style={AllDepStyle.addedText}>Added on 01/13/2023</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={AllDepStyle.firstObject}>
-          <Image source={require('../../../../assets/image_ADM.png')} style={AllDepStyle.image} />
-          <TouchableOpacity style={AllDepStyle.clickable}>
-            <Text style={AllDepStyle.technologyText}>Administrative</Text>
-            <View style={AllDepStyle.labelsContainer}>
-              <Text style={AllDepStyle.hoText}>Remote</Text>
-              <Text style={AllDepStyle.fdsText}>Weekends</Text>
-              <Text style={AllDepStyle.hnText}>Night Shift</Text>
-            </View>
-            <Text style={AllDepStyle.addedText}>Added on 01/13/2023</Text>
-          </TouchableOpacity>
-        </View>
+          ))
+        ) : (
+          <Text style={AllDepStyle.noDepartmentsText}>No departments available.</Text>
+        )}
       </View>
     </View>
   );

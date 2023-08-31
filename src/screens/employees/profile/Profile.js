@@ -22,7 +22,6 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const userData = await getUser(userIdentifier);
-        console.log('userData', userData)
         setUser(userData?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -52,25 +51,25 @@ const Profile = () => {
 <Label
           iconSource={require('../../../../assets/favicon.png')}
           title="Horas Noturnas"
-          description={user?.horasNoturnas ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          description={user?.horasNoturnas ? "Sim" : "Não"}
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
           title="Home Office"
-          description={user?.homeOffice ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          description={user?.homeOffice ? "Sim" : "Não"}
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
           title="Trabalho finais de semana"
-          description={user?.finalDeSemana ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          description={user?.finalDeSemana ? "Sim" : "Não"}
         />
 
         <Label
           iconSource={require('../../../../assets/favicon.png')}
           title="Lembrar por I.A"
-          description={user?.aceitaIA ? "Sim" : "Não"} // Usar operador ternário para exibir Sim ou Não
+          description={user?.aceitaIA ? "Sim" : "Não"}
         />
       </ScrollView>
     </View>

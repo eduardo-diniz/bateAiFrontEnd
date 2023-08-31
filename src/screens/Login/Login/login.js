@@ -12,8 +12,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      console.log('Tentando fazer login com CPF/CNPJ:', cpfOuCnpj);
-      console.log('Senha:', senha);
+  
 
       const response = await login(cpfOuCnpj, senha);
 
@@ -22,12 +21,11 @@ const LoginScreen = ({ navigation }) => {
       const token = response.data.token;
 
       await AsyncStorage.setItem('token', token);
-      console.log('Login bem-sucedido. Token:', token);
 
       if (cpfOuCnpj.length === 11) {
         navigation.navigate('Home', { userIdentifier: cpfOuCnpj })
       } else if (cpfOuCnpj.length === 14) {
-        navigation.navigate('CompanyConfirmation', { userIdentifier: cpfOuCnpj })
+        navigation.navigate('HomeCompany', { userIdentifier: cpfOuCnpj })
       }
 
     } catch (error) {

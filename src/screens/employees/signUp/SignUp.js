@@ -34,11 +34,9 @@ const SignUp = () => {
       finalDeSemana: departmentData.AllowsWeekendWork
     };
     
-    console.log(userData)
 
 try {
       const response = await createUser(userData);
-      console.log('Resposta da criação da empresa:', response.data);
       
       navigation.navigate('Home');
 
