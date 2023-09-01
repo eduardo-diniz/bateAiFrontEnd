@@ -35,7 +35,7 @@ i18n
       en: { translation: enTranslation },
       pt: { translation: ptTranslation }
     },
-    lng: 'pt', // Defina o idioma padrão aqui
+    lng: 'en', // Defina o idioma padrão aqui
     interpolation: {
       escapeValue: false // Permite que você use variáveis nas traduções
     }
@@ -49,25 +49,23 @@ export default function App() {
     <AuthProvider>
     <NavigationContainer>
       <View style={styles.container}>
-        <Stack.Navigator initialRouteName="LoginScreen">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="HomeCompany" component={HomeCompany} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="AddCompany" component={AddCompany} />
-          <Stack.Screen name="CompanyConfirmation" component={CompanyConfirmation} />
-          <Stack.Screen name="AddDepartament" component={AddDepartament} />
-          <Stack.Screen name="DepartamentConfirmation" component={DepartamentConfirmation} />
-          <Stack.Screen name="CoicheScreen" component={CoicheScreen} />
-          <Stack.Screen name="AllDepartments" component={AllDepartments} />
-          <Stack.Screen name="ShareDep" component={ShareDep} />
-          <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="TechnologyScreen" component={TechnologyScreen} />
-
-
-        </Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Home" component={Home} options={{ title: 'Dashboard' }} />
+        <Stack.Screen name="HomeCompany" component={HomeCompany} options={{ title: 'Company Dashboard' }} />
+        <Stack.Screen name="Profile" component={Profile} options={{ title: 'My Profile' }} />
+        <Stack.Screen name="AllTimeSheets" component={AllTimeSheets} options={{ title: 'All Time Sheets' }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
+        <Stack.Screen name="AddCompany" component={AddCompany} options={{ title: 'Add Company' }} />
+        <Stack.Screen name="CompanyConfirmation" component={CompanyConfirmation} options={{ title: 'Company Confirmation' }} />
+        <Stack.Screen name="AddDepartament" component={AddDepartament} options={{ title: 'Add Department' }} />
+        <Stack.Screen name="DepartamentConfirmation" component={DepartamentConfirmation} options={{ title: 'Department Confirmation' }} />
+        <Stack.Screen name="CoicheScreen" component={CoicheScreen} options={{ title: 'Choose Screen' }} />
+        <Stack.Screen name="AllDepartments" component={AllDepartments} options={{ title: 'All Departments' }} />
+        <Stack.Screen name="ShareDep" component={ShareDep} options={{ title: 'Share Department' }} />
+        <Stack.Screen name="ConfirmationSector" component={ConfirmationSector} options={{ title: 'Sector Confirmation' }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
+        <Stack.Screen name="TechnologyScreen" component={TechnologyScreen} options={{ title: 'Technology Screen' }} />
+      </Stack.Navigator>
         <StatusBar style="auto" />
       </View>
     </NavigationContainer>

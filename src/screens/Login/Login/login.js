@@ -1,6 +1,6 @@
 // LoginScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../../../services/services'; // Importando a função de login
 import LoginScreenStyles from './LoginScreenStyles'; // Importando os estilos
@@ -18,11 +18,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-  
-
       const response = await login(cpfOuCnpj, senha);
-
-
       const token = response.data.token;
 
       await AsyncStorage.setItem('token', token);
@@ -40,36 +36,37 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleCoicheScreen = () => {
-    
     navigation.navigate('CoicheScreen')
-
   }
 
-
-  
-
   return (
-    <View style={LoginScreenStyles.container}>
-      <Text style={LoginScreenStyles.title}>Login</Text>
-      <TextInput
-        style={LoginScreenStyles.input}
-        placeholder={t('placeholdercpfcnpj')}
-        onChangeText={text => setCPFouCNPJ(text)}
-      />
-      <TextInput
-        style={LoginScreenStyles.input}
-        placeholder={t('password')}
-        secureTextEntry
-        onChangeText={text => setSenha(text)}
-      />
-      <TouchableOpacity style={LoginScreenStyles.button} onPress={handleLogin}>
-        <Text style={LoginScreenStyles.buttonText}>{t('submit')}</Text>
-      </TouchableOpacity>
-      <ButtonT style={LoginScreenStyles.buttonT}/>
-      <TouchableOpacity style={LoginScreenStyles.button} onPress={handleCoicheScreen}>
-        <Text style={LoginScreenStyles.buttonText}>SignUp</Text>
-      </TouchableOpacity>
-      {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
+    <View style={LoginScreenStyles.background}>
+      <View style={LoginScreenStyles.container}>
+        <Image
+          source={require('../../../../assets/logo_bate_ai.png')}
+          style={LoginScreenStyles.logo} />
+
+        <Text style={LoginScreenStyles.title}>{t('login')}</Text>
+        <TextInput
+          style={LoginScreenStyles.input}
+          placeholder={t('placeholdercpfcnpj')}
+          onChangeText={text => setCPFouCNPJ(text)}
+        />
+        <TextInput
+          style={LoginScreenStyles.input}
+          placeholder={t('password')}
+          secureTextEntry
+          onChangeText={text => setSenha(text)}
+        />
+        <TouchableOpacity style={LoginScreenStyles.button} onPress={handleLogin}>
+          <Text style={LoginScreenStyles.buttonText}>{t('submit')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={LoginScreenStyles.buttonSignUp} onPress={handleCoicheScreen}>
+          <Text style={LoginScreenStyles.buttonText}>{t('signup')}</Text>
+        </TouchableOpacity>
+        <ButtonT style={LoginScreenStyles.languageButtons} />
+        {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
+      </View>
     </View>
   );
 };

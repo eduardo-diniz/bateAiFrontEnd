@@ -22,7 +22,6 @@ const AddCompany = () => {
   const route = useRoute();
   const userIdentifier = CNPJ;
 
-
   const handleCreateCompany = async () => {
     const companyData = {
       Name: name,
@@ -47,7 +46,7 @@ const AddCompany = () => {
       <KeyboardAwareScrollView contentContainerStyle={AddCompanyStyle.scrollContainer}>
         <Text style={AddCompanyStyle.title}>{t('createcompany')}</Text>
         <View style={AddCompanyStyle.form}>
-          <Text style={AddCompanyStyle.label}>{('companyname')}</Text>
+          <Text style={AddCompanyStyle.label}>{t('companyname')}</Text>
           <TextInput
             style={AddCompanyStyle.input}
             value={name}
@@ -70,7 +69,7 @@ const AddCompany = () => {
             keyboardType="numeric"
           />
 
-          <Text style={AddCompanyStyle.label}>{t('passowrd')}</Text>
+          <Text style={AddCompanyStyle.label}>{t('password')}</Text>
           <TextInput
             style={AddCompanyStyle.input}
             value={senha}

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import CoicheScreenStyles from './CoicheScreenStyles'; 
 import { useTranslation } from 'react-i18next';
 
+
 const CoicheScreen = () => {
   const { t } = useTranslation();
   const navigation = useNavigation();

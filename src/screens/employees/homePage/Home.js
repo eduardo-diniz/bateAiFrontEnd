@@ -57,6 +57,7 @@ const Home = () => {
         }));
         //console.log('fomart', formattedTimeSheets)
         setTimeSheets(formattedTimeSheets);
+        setMessage(t('pointsuccessfullymarked'))
         //setTimeSheets(timeSheetData?.data);
         //console.log('timeSheets', timeSheetData?.data);
       } catch (error) {
@@ -124,8 +125,6 @@ const Home = () => {
     }
   };
 
-
-
   const handleButtonPress1 = () => {
     setVisible(false);
   };
@@ -135,7 +134,7 @@ const Home = () => {
       await logout();
       authLogout();
 
-      navigation.navigate('LoginScreen');
+      navigation.navigate('Login');
 
     } catch (error) {
       console.error("Error logging out:", error);
@@ -143,17 +142,17 @@ const Home = () => {
   };
   return (
     <View>
-      <ButtonC name={'Logout'} onPress={handleLogout} />
-
-      <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
+      
+      <ProfileInfoC departament={'T.I'} name={user?.name} 
+        nick={user?.cpf} picture="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
 
       <View style={HomeStyle.viewButtons}>
         <ButtonC name={t('viewprofile')} onPress={handleverPerfil} />
         <ButtonC name={t('viewrecords')} onPress={handleverRegistros} />
       </View>
-      {!timeSheets ? <Text>{t('loading')}</Text> : (
+      {!timeSheets ? <Text  style={HomeStyle.noRegister} >{t('loading')}</Text> : (
 
-        <ListViewC name={t('latestrecords')} list={timeSheets}></ListViewC>
+        <ListViewC name={t('latestrecords')} list={timeSheets.slice(0,5)}></ListViewC>
       )
       }
       
@@ -163,6 +162,7 @@ const Home = () => {
         <ButtonC name={'Ok'} onPress={handleButtonPress1} />
       </ModalPopup>
       <ButtonC name={t('topunchtheclock')} onPress={handleButtonPress} />
+      <ButtonC name={t('logout')} onPress={handleLogout} />
 
     </View>
   );

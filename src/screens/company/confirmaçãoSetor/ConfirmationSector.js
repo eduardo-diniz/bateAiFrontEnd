@@ -30,8 +30,8 @@ const DepartamentConfirmation = ({ navigation }) => {
 
                     <Text style={ConfSectorStyle.message}>
                         {t('thedepartmenthasbeensuccessfullycreated!')} {'\n'}
-                        {t('youcannowinviteyouremployees!')}{'\n'}
-                        {t('Oorifyoupreferyoucancreateotherdepartments!')}
+                        {t('youcannowinviteyouremployees')}{'\n'}
+                        {t('orifyoupreferyoucancreateotherdepartments')}
                     </Text>
                     <ButtonC name={t('inviteemployees')} onPress={() => handleverRegistros2(departament)} />
                     <ButtonC name={t('createdepartment')} onPress={handleverRegistros} />

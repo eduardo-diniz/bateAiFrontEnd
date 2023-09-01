@@ -40,39 +40,30 @@ const Profile = () => {
     <View style={ProfileStyles.container}>
       <View style={ProfileStyles.profileInfo}>
         <ProfileInfoC departament={'T.I'} name={user?.name} 
-        nick={user?.cpf} picture="https://placekitten.com/200/200" />
+        nick={user?.cpf} picture="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
       </View>
-
       <ScrollView style={ProfileStyles.labelsContainer}>
-     
 
-        <Label
-          iconSource={require('../../../../assets/favicon.png')}
-          title="Horário"
-          description="Falta Field no back"
-        />
-
-
-<Label
-          iconSource={require('../../../../assets/favicon.png')}
+      <Label
+          iconSource={require('../../../../assets/coffee-break.png')}
           title={t('nighthours')}
           description={user?.horasNoturnas ? t('yes') : t('no') } 
         />
 
         <Label
-          iconSource={require('../../../../assets/favicon.png')}
+          iconSource={require('../../../../assets/coffee-break.png')}
           title="Home Office"
           description={user?.homeOffice ? t('yes') : t('no')} 
         />
 
         <Label
-          iconSource={require('../../../../assets/favicon.png')}
+          iconSource={require('../../../../assets/time-is-money.png')}
           title={t('workattheweekend')}
           description={user?.finalDeSemana ? t('yes') : t('no')} 
         />
 
         <Label
-          iconSource={require('../../../../assets/favicon.png')}
+          iconSource={require('../../../../assets/full-time.png')}
           title={t('RememberbyAI')}
           description={user?.aceitaIA ? t('yes') : t('no')} 
         />

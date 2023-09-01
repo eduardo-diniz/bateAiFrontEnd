@@ -31,11 +31,11 @@ const ConfirmacaoCompany = ({ navigation }) => {
                     <Image source={require('../../../../assets/success.png')} style={CompanyConfStyle.image} />
 
                     <Text style={CompanyConfStyle.message}>
-                        {t('Thecompanysuccessfullycreated')} {'\n'}
-                        {t('Tostartinvitingemployeesreateadepartment')}
+                        {t('thecompanysuccessfullycreated')} {'\n'}
+                        {t('tostartinvitingemployeesreateadepartment')}
                     </Text>
-                    <ButtonC name={'criar departamento'} onPress={handleAddDepartament} />
-                    <ButtonC name={'Ver Empresa'} onPress={handleHome} />
+                    <ButtonC name={t('adddepartment')} onPress={handleAddDepartament} />
+                    <ButtonC name={t('viewCompany')} onPress={handleHome} />
 
                 </View>
 

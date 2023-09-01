@@ -19,6 +19,7 @@ const SignUpStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   form: {
+    marginTop: 35,
     width: '80%',
     backgroundColor: 'white',
     padding: 20,
@@ -27,6 +28,7 @@ const SignUpStyles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowRadius: 5,
+    marginBottom: 35,
   },
   label: {
     fontSize: 16,
@@ -40,6 +42,7 @@ const SignUpStyles = StyleSheet.create({
     marginBottom: 15,
     paddingHorizontal: 10,
   },
+ 
 });
 
 export default SignUpStyles;

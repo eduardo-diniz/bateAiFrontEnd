@@ -58,14 +58,13 @@ const AllTimeSheets = () => {
   }, [userIdentifier, token]);
   return (
     <View style={AllTimeSheetsStyle.container}>
-      <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://placekitten.com/200/200" />
+      <ProfileInfoC departament={'T.I'} name={user?.name} nick={user?.cpf} picture="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.pn" />
       <View style={AllTimeSheetsStyle.titleContainer}>
         <Text style={AllTimeSheetsStyle.titleText}>{t('allrecords')}</Text>
       </View>
       <ScrollView style={AllTimeSheetsStyle.listViewContainer}>
-        {!timeSheets ? <Text>{('loading')}</Text> : (
+        {!timeSheets ? <Text>{t('loading')}</Text> : (
           <ListViewC name={''} list={timeSheets} />
-
         )}
       </ScrollView>
     </View>

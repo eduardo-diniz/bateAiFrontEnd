@@ -70,55 +70,55 @@ const AddDepartment = () => {
                         onChangeText={setDepartamentId}
                     />
 
-                    <Text style={addDepStyle.label}>Tax ID (CNPJ):</Text>
+                    <Text style={addDepStyle.label}>(CNPJ):</Text>
                     <TextInput
                         style={addDepStyle.input}
                         value={userIdentifier}
                         
                     />
-                    <Text style={addDepStyle.label}>Allow home office:</Text>
+                    <Text style={addDepStyle.label}>{t('allowhomeoffice')}:</Text>
                     <View style={addDepStyle.radioButtonContainer}>
                         <CustomRadioButton
-                            label="Yes"
+                            label= {t('yes')}
                             selected={homeoffice === 'yes'}
                             onPress={() => setHomeOffice('yes')}
                         />
                         <CustomRadioButton
-                            label="No"
+                            label={t('no')}
                             selected={homeoffice === 'no'}
                             onPress={() => setHomeOffice('no')}
                         />
                     </View>
 
-                    <Text style={addDepStyle.label}>Allow night shifts:</Text>
+                    <Text style={addDepStyle.label}>{t('allownightshifts')}:</Text>
                     <View style={addDepStyle.radioButtonContainer}>
                         <CustomRadioButton
-                            label="Yes"
-                            selected={nightShift === 'yes'}
+                            label={t('yes')}
+                            selected={nightShift === 'yes' }
                             onPress={() => setNightShift('yes')}
                         />
                         <CustomRadioButton
-                            label="No"
-                            selected={nightShift === 'no'}
+                            label={t('no')}
+                            selected={nightShift === 'no' }
                             onPress={() => setNightShift('no')}
                         />
                     </View>
 
-                    <Text style={addDepStyle.label}>Allow weekends:</Text>
+                    <Text style={addDepStyle.label}>{t('allowweekends')}:</Text>
                     <View style={addDepStyle.radioButtonContainer}>
                         <CustomRadioButton
-                            label="Yes"
-                            selected={weekends === 'yes'}
+                            label={t('yes')}
+                            selected={weekends === 'yes' }
                             onPress={() => setWeekends('yes')}
                         />
                         <CustomRadioButton
-                            label="No"
-                            selected={weekends === 'no'}
+                            label={t('no')}
+                            selected={weekends === 'no' }
                             onPress={() => setWeekends('no')}
                         />
                     </View>
                 </View>
-                <ButtonC style={addDepStyle.button} name="Submit" onPress={handleSubmit} />
+                <ButtonC style={addDepStyle.button} name={t('submit')} onPress={handleSubmit} />
             </KeyboardAwareScrollView>
         </SafeAreaView>
     );

@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ButtonC from '../../../components/button/ButtonC';
 import { useNavigation } from '@react-navigation/native';
 import { getDepartmentByID, createUser } from '../../../services/services';
-import SignUpStyles from './SignUpStyles'; // Importando os estilos
+import SignUpStyles from './SignUpStyles'; 
 import { useTranslation } from 'react-i18next';
 
 
@@ -49,8 +49,7 @@ try {
      navigation.navigate('Home',{ userIdentifier: userIdentifier });
 
     } catch (error) {
-      //console.error('Erro ao criar empresa:', error);
-      setMessage(t('errorcreatecompany')); // Invoca a função de tradução
+      setMessage(t('errorcreatecompany')); 
     }
   };
 
@@ -101,12 +100,6 @@ try {
           onChangeText={setCompanyCode}
         />
 
-        <Text style={SignUpStyles.label}>{t('jobposition')}</Text>
-        <TextInput
-          style={SignUpStyles.input}
-          value={cargo}
-          onChangeText={setCargo}
-        />
         </View>
         <ButtonC style={SignUpStyles.button} name={t('submit')} onPress={handleSubmit} />
       </KeyboardAwareScrollView>

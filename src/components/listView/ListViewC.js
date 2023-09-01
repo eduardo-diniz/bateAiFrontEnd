@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 const ListViewC = ({ name, list }) => {
   return (
     <View>
-
       <Text style={styles.title}>{name}</Text>
       <View style={styles.view}>
   {list.map((item, index) => {
@@ -22,9 +21,10 @@ const ListViewC = ({ name, list }) => {
 const styles = StyleSheet.create({
   view: {
     margin: 10,
-    backgroundColor: '#fffa',
     borderRadius: 5,
     padding: 10,
+    backgroundColor: '#f5f5f5', 
+
   },
   text: {
     color: 'black',
