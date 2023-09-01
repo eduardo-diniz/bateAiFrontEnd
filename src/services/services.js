@@ -29,7 +29,6 @@ export const createTimesheet = (cpf, time) => api.post(endpoints.timeSheets, {CP
 export const createDepartment = (departmentData) => api.post(endpoints.departments, departmentData);
 export const createUser = (userData) => api.post(endpoints.user, userData);
 
-// Função para realizar o login
 export const login = (cpfOuCnpj, senha) => api.post(endpoints.login, { cpfOuCnpj, senha });
 export const logout = () => api.post(endpoints.logout);
 

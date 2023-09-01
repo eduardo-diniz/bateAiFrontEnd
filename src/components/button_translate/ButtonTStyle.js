@@ -8,7 +8,7 @@ const ButtonTStyle = StyleSheet.create({
       marginTop: 10,
     },
     buttonSpacing: {
-      width: 10, // Espaçamento horizontal entre os botões
+      width: 10, 
     },
 
   });

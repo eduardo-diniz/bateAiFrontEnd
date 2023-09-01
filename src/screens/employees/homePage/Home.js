@@ -43,7 +43,6 @@ const Home = () => {
     const fetchTimeSheetData = async () => {
       try {
         const timeSheetData = await getTimesheets(userIdentifier);
-        //const timeSheetData = await getTimesheets(userIdentifier);
         console.log(timeSheetData?.data);
 
         const brazilTimezone = 'America/Sao_Paulo';
@@ -55,13 +54,12 @@ const Home = () => {
             { timeZone: brazilTimezone }
           ),
         }));
-        //console.log('fomart', formattedTimeSheets)
+
         setTimeSheets(formattedTimeSheets);
         setMessage(t('pointsuccessfullymarked'))
-        //setTimeSheets(timeSheetData?.data);
-        //console.log('timeSheets', timeSheetData?.data);
+
       } catch (error) {
-        // console.error("Error fetching time sheet data:", error);
+
       }
     };
 
@@ -81,7 +79,6 @@ const Home = () => {
   const handleButtonPress = async () => {
     setStatus(true);
 
-    // Verificar a disponibilidade de autenticação biométrica
     const isBiometricAvailable = await LocalAuthentication.hasHardwareAsync();
 
     if (isBiometricAvailable) {
@@ -121,7 +118,6 @@ const Home = () => {
       }
     } else {
       console.log('Autenticação biométrica não disponível neste dispositivo.');
-      // Fallback para outra forma de autenticação, se necessário
     }
   };
 
@@ -142,20 +138,20 @@ const Home = () => {
   };
   return (
     <View>
-      
-      <ProfileInfoC departament={'T.I'} name={user?.name} 
+
+      <ProfileInfoC departament={'T.I'} name={user?.name}
         nick={user?.cpf} picture="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
 
       <View style={HomeStyle.viewButtons}>
         <ButtonC name={t('viewprofile')} onPress={handleverPerfil} />
         <ButtonC name={t('viewrecords')} onPress={handleverRegistros} />
       </View>
-      {!timeSheets ? <Text  style={HomeStyle.noRegister} >{t('loading')}</Text> : (
+      {!timeSheets ? <Text style={HomeStyle.noRegister} >{t('loading')}</Text> : (
 
-        <ListViewC name={t('latestrecords')} list={timeSheets.slice(0,5)}></ListViewC>
+        <ListViewC name={t('latestrecords')} list={timeSheets.slice(0, 5)}></ListViewC>
       )
       }
-      
+
 
       <ModalPopup visible={visible} text={message} status={status}>
         <View style={{ alignItems: 'center' }}></View>

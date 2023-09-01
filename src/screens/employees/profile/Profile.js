@@ -8,7 +8,7 @@ import { getUser, getTimesheets, createTimesheet, logout } from '../../../servic
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../AuthContext';
 import { useRoute } from '@react-navigation/native';
-import ProfileStyles from './ProfileStyle'; // Importando os estilos
+import ProfileStyles from './ProfileStyle'; 
 import { useTranslation } from 'react-i18next';
 
 

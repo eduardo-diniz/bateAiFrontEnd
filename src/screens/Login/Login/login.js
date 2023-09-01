@@ -1,9 +1,8 @@
-// LoginScreen.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { login } from '../../../services/services'; // Importando a função de login
-import LoginScreenStyles from './LoginScreenStyles'; // Importando os estilos
+import { login } from '../../../services/services'; 
+import LoginScreenStyles from './LoginScreenStyles';
 import { useTranslation } from 'react-i18next';
 import ButtonT from '../../../components/button_translate/ButtonT';
 

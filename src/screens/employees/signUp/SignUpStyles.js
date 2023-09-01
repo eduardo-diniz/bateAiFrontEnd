@@ -1,4 +1,3 @@
-// SignUpStyles.js
 import { StyleSheet } from 'react-native';
 
 const SignUpStyles = StyleSheet.create({

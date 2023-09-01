@@ -42,13 +42,8 @@ const AllTimeSheets = () => {
             { timeZone: brazilTimezone }
           ),
         }));
-        //console.log('fomart', formattedTimeSheets)
         setTimeSheets(formattedTimeSheets);
-
-        //setTimeSheets(timeSheetData?.data)
         setUser(userData?.data);
-        //console.log('timeSheets', timeSheets)
-
       } catch (error) {
         console.error("Error fetching user data:", error);
       }

@@ -24,7 +24,7 @@ import HomeCompany from './src/screens/company/home/HomeCompany'
 import { AuthProvider } from './src/AuthContext';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enTranslation from './src/locales/en.json'; // Importar suas traduções
+import enTranslation from './src/locales/en.json';
 import ptTranslation from './src/locales/pt.json';
 
 i18n
@@ -35,9 +35,9 @@ i18n
       en: { translation: enTranslation },
       pt: { translation: ptTranslation }
     },
-    lng: 'en', // Defina o idioma padrão aqui
+    lng: 'en', 
     interpolation: {
-      escapeValue: false // Permite que você use variáveis nas traduções
+      escapeValue: false
     }
   });
 
