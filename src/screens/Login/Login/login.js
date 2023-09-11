@@ -42,7 +42,6 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={LoginScreenStyles.background}>
       <View style={LoginScreenStyles.container}>
-      <MotivationalQuotes />
         <Image
           source={require('../../../../assets/logo_bate_ai.png')}
           style={LoginScreenStyles.logo} />
@@ -67,6 +66,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
         <ButtonT style={LoginScreenStyles.languageButtons} />
         {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
+      <MotivationalQuotes />
 
       </View>
     </View>
