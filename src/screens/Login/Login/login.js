@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { login } from '../../../services/services'; 
+import { login } from '../../../services/services';
 import LoginScreenStyles from './LoginScreenStyles';
 import { useTranslation } from 'react-i18next';
 import ButtonT from '../../../components/button_translate/ButtonT';
+import MotivationalQuotes from '../../../components/MotivationalQuotes/MotivationalQuotes';
 
 
 
@@ -41,6 +42,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={LoginScreenStyles.background}>
       <View style={LoginScreenStyles.container}>
+      <MotivationalQuotes />
         <Image
           source={require('../../../../assets/logo_bate_ai.png')}
           style={LoginScreenStyles.logo} />
@@ -65,6 +67,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
         <ButtonT style={LoginScreenStyles.languageButtons} />
         {error ? <Text style={LoginScreenStyles.errorText}>{error}</Text> : null}
+
       </View>
     </View>
   );
