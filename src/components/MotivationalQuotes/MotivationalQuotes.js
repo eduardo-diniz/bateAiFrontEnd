@@ -29,16 +29,8 @@ const MotivationalQuotes = () => {
                         {
                             role: "system",
                             content: "Retorne uma frase motivacional. Resuma sua resposta apenas a frase"
-                        },
-                        {
-                            role: "assistant",
-                            content: "O sucesso é a soma de pequenos esforços repetidos dia após dia."
-                        },
-                        {
-                            role: "assistant",
-                        content: "Nada como um dia após o outro dia" 
-                        },],
-                    temperature: 0.8,
+                        }],
+                    temperature: 1,
 
                 },
                 config
