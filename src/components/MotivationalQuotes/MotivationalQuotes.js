@@ -3,7 +3,6 @@ import { View, Text, Button } from 'react-native';
 import axios from 'axios';
 import axiosRateLimit from 'axios-rate-limit';
 import { API_BASE_URL, API_KEY } from '@env';
-// import { openai } from '../../services/openai';
 
 
 const axiosWithRateLimit = axiosRateLimit(axios.create(), { maxRequests: 1, perMilliseconds: 5000 });
@@ -13,7 +12,7 @@ const MotivationalQuotes = () => {
 
     const generateQuote = async () => {
         try {
-            const apiKey = API_KEY;
+            const apiKey = API_KEY //"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";
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +29,15 @@ const MotivationalQuotes = () => {
                         {
                             role: "system",
                             content: "Retorne uma frase motivacional. Resuma sua resposta apenas a frase"
-                        }],
+                        },
+                        {
+                            role: "assistant",
+                            content: "O sucesso é a soma de pequenos esforços repetidos dia após dia."
+                        },
+                        {
+                            role: "assistant",
+                        content: "Nada como um dia após o outro dia" 
+                        },],
                     temperature: 0.8,
 
                 },
@@ -58,6 +65,7 @@ const MotivationalQuotes = () => {
         <View>
             <Text>Frase do Dia:</Text>
             <Text>{quote}</Text>
+            <Button title="Gerar Frase" onPress={generateQuote} />
         </View>
     );
 };
